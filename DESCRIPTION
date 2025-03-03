@@ -1,12 +1,22 @@
 Package: noclocksai
-Title: What the Package Does (One Line, Title Case)
+Title: No Clocks AI
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person("Jimmy", "Briggs", , "jimmy.briggs@jimbrig.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-7489-8787"))
-Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+           comment = c(ORCID = "0000-0002-7489-8787")),
+    person("Patrick", "Howard", , "patrick.howard@noclocks.dev", role = c("aut", "rev")),
+    person("No Clocks, LLC", , , "team@noclocks.dev", role = c("cph", "fnd"))
+  )
+Description: The `noclocksai` package provides a set of tools for working
+    with AI at No Clocks, LLC.
+License: file LICENSE
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/noclocks/noclocksai
+BugReports: https://github.com/noclocks/noclocksai/issues
