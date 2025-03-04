@@ -1,0 +1,24 @@
+# Global
+# -------------
+* text=auto
+tests/fixtures/**/* -diff
+
+# R Files
+# -------------
+*.{R,Rmd,Rd,Rproj,[Rr]environ,[Rr]profile,[Rr]history} text
+
+# Binary Files
+# -------------
+*.{R[Dd]ata,R[Dd][Ss],rda,rdb,rds,Rdx} binary
+*.zip binary
+*.{pdf,png,jpg,jpeg,gif} binary
+
+# Linguist
+# -------------
+.[Rr]md linguist-detectable
+*.{md,markdown,txt} linguist-documentation
+docs/** linguist-documentation
+vignettes/** linguist-documentation
+*.{js,css,scss,less} linguist-vendored
+*.{min.js,min.css} linguist-generated
+

@@ -28,17 +28,15 @@ require(fs)
 
 # initialize --------------------------------------------------------------
 if (FALSE) {
-  usethis::create_package("cspr")
+  usethis::create_package("noclocksai")
   usethis::use_git()
   usethis::use_namespace()
   usethis::use_roxygen_md()
+  usethis::use_package_doc(open = FALSE)
   usethis::use_import_from("rlang", ".data")
   usethis::use_import_from("rlang", ".env")
   usethis::use_import_from("rlang", "%||%")
 }
-
-attachment::att_amend_desc()
-devtools::document()
 
 # setup dev directory -----------------------------------------------------
 if (FALSE) {
@@ -46,14 +44,15 @@ if (FALSE) {
   usethis::use_directory("dev", ignore = TRUE)
 }
 
+attachment::att_amend_desc()
+devtools::document()
+
 # description -------------------------------------------------------------
 if (FALSE) {
   usethis::use_description(
     fields = list(
-      Title = "Charles Street Partners",
-      Description = paste0(
-        "The `cspr` package provides a set of tools for working with the Charles Street Partners chat agent."
-      ),
+      Title = "No Clocks AI",
+      Description = "The `noclocksai` package provides a set of tools for working with AI at No Clocks, LLC.",
       Language =  "en-US"
     )
   )
@@ -85,22 +84,21 @@ if (FALSE) {
 if (FALSE) {
   usethis::use_readme_md(open = FALSE)
   usethis::use_proprietary_license("No Clocks, LLC")
-  usethis::use_package_doc(open = FALSE)
-  usethis::use_vignette("cspr")
+  usethis::use_vignette("noclocksai")
 }
 
 # logo --------------------------------------------------------------------
 if (FALSE) {
-  logo_url <- "https://charlesstreetpartners.com/wp-content/uploads/2023/03/Charles-Street-Logo-01.png"
+  logo_url <- "https://raw.githubusercontent.com/jimbrig/noclocksr/refs/heads/main/man/figures/noclocks-logo.png"
   fs::dir_create("man/figures")
-  download.file(logo_url, destfile = "man/figures/csp-logo.png", mode = "wb")
-  usethis::use_logo("man/figures/csp-logo.png")
+  download.file(logo_url, destfile = "man/figures/logo.png", mode = "wb")
+  usethis::use_logo("man/figures/logo.png")
 }
 
 # git & github ------------------------------------------------------------
 if (FALSE) {
   usethis::use_git()
-  usethis::use_github()
+  usethis::use_github(organisation = "noclocks", private = FALSE, visibility = "public")
   usethis::use_github_links(overwrite = TRUE)
 }
 
@@ -109,7 +107,7 @@ if (FALSE) {
   usethis::use_testthat(edition = 3)
 
   # code coverage
-  usethis::use_coverage(type = "codecov", repo_spec = "noclocks/cspr")
+  usethis::use_coverage(type = "codecov", repo_spec = "noclocks/noclocksai")
   usethis::use_github_action("test-coverage")
   usethis::use_covr_ignore("dev/")
   usethis::use_covr_ignore("inst/")
@@ -119,13 +117,13 @@ if (FALSE) {
   usethis::use_build_ignore("~\\$.*", escape = FALSE)
 
   # initial tests
-  usethis::use_test("cspr")
+  usethis::use_test("noclocksai", open = FALSE)
 
   # httptest2
-  httptest2::use_httptest2()
+  # httptest2::use_httptest2()
 
   # shinytest2
-  shinytest2::use_shinytest2()
+  # shinytest2::use_shinytest2()
 
   # spellcheck
   usethis::use_spell_check()
@@ -249,6 +247,7 @@ if (FALSE) {
     "inst",
     "inst/config",
     "inst/extdata",
+    "inst/templates",
     "inst/prompts",
     "inst/www"
   ) |>
@@ -262,15 +261,31 @@ if (FALSE) {
 
   cfg <- list(
     default = list(
-      openai_api_key = "",
-      gemini_api_key = "",
-      gmaps_api_key = "",
-      hunterio_api_key = "",
-      anymailfinder_api_key = "",
-      attom_api_key = "",
-      search_api_key = "",
-      serp_api_key = "",
-      tavily_api_key = ""
+      llms = list(
+        openai_api_key = "",
+        gemini_api_key = "",
+        anthropic_api_key = "",
+        perplexity_api_key = "",
+        groq_api_key = "",
+        openrouter_api_key = ""
+      ),
+      tools = list(
+        gmaps_api_key = "",
+        hunterio_api_key = "",
+        anymailfinder_api_key = "",
+        attom_api_key = "",
+        search_api_key = "",
+        serp_api_key = "",
+        tavily_api_key = ""
+      ),
+      db = list(
+        dbname = "noclocks",
+        host = "localhost",
+        port = 5432,
+        user = "postgres",
+        password = "postgres",
+        uri = "postgresql://postgres:postgres@localhost:5432/noclocks"
+      )
     )
   )
 
@@ -289,7 +304,6 @@ if (FALSE) {
   fs::dir_create("data-raw/original")
   fs::dir_create("data-raw/working")
   fs::dir_create("data-raw/scripts")
-  fs::file_create("data-raw/scripts/hud_data.R")
 }
 
 # refresh -----------------------------------------------------------------

@@ -1,0 +1,24 @@
+default:
+  llms:
+    openai_api_key: "<OPENAI_API_KEY>"
+    gemini_api_key: "<GEMINI_API_KEY>"
+    anthropic_api_key: "<ANTHROPIC_API_KEY>"
+    perplexity_api_key: "<PERPLEXITY_API_KEY>"
+    groq_api_key: "<GROQ_API_KEY>"
+    openrouter_api_key: "<OPENROUTER_API_KEY>"
+  tools:
+    gmaps_api_key: "<GMAPS_API_KEY>"
+    hunterio_api_key: "<HUNTERIO_API_KEY>"
+    anymailfinder_api_key: "<ANYMAILFINDER_API_KEY>"
+    attom_api_key: "<ATTOM_API_KEY>"
+    search_api_key: "<SEARCH_API_KEY>"
+    serp_api_key: "<SERP_API_KEY>"
+    tavily_api_key: "<TAVILY_API_KEY>"
+  db:
+    dbname: "<DBNAME>"
+    host: "<HOST>"
+    port: "<PORT>"
+    user: "<USER>"
+    password: "<PASSWORD>"
+    uri: "<URI>"
+

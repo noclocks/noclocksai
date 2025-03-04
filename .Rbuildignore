@@ -1,3 +1,16 @@
 ^noclocksai\.Rproj$
 ^\.Rproj\.user$
 ^dev$
+^codecov\.yml$
+^\.github$
+^\.covrignore$
+~\$.*
+^\.lintr$
+^\.gitattributes$
+^\.editorconfig$
+^codemeta\.json$
+^config\.yml$
+^\.dockerignore$
+^Dockerfile$
+^data-raw$
+^CHANGELOG\.md$
