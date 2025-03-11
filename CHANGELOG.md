@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+## Documentation
+
+- Create dev docs rag-tools.md ([f962a5f](https://github.com/noclocks/noclocksai/commit/f962a5f7d0b3c0e290b8cf6e48e61b1b9d0dfd50))  - (Jimmy Briggs)
+
 ## Features
 
 - Database ([567077b](https://github.com/noclocks/noclocksai/commit/567077b44b976f0d872b3b28e19345c760fb50f6))  - (Jimmy Briggs)
