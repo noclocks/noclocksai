@@ -1,0 +1,64 @@
+{
+  "output": {
+    "filePath": "dev/noclocksai.repomix.md",
+    "style": "markdown",
+    "parsableStyle": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "removeComments": true,
+    "removeEmptyLines": true,
+    "compress": false,
+    "topFilesLength": 5,
+    "showLineNumbers": false,
+    "copyToClipboard": false
+  },
+  "include": [
+    ""
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      ".Rproj.user/",
+      ".github/",
+      ".vscode/",
+      ".git/",
+      ".devcontainer/",
+      ".config/",
+      ".idea/",
+      ".venv/",
+      "node_modules/",
+      "doc/",
+      "Meta/",
+      "tests/",
+      "docs/",
+      "man/",
+      "dev/",
+      "*.Rproj",
+      "config.yml",
+      "repomix.config.json",
+      ".repomixignore",
+      ".gitignore",
+      ".gitattributes",
+      ".gitmodules",
+      ".editorconfig",
+      "codemeta.json",
+      ".lintr",
+      ".covrignore",
+      "codecov.yml",
+      "*.code-workspace",
+      "LICENSE",
+      "LICENSE.md",
+      "NEWS.md",
+      "inst/extdata/documents/",
+      "inst/database/",
+      "R/import-*.R"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "tokenCount": {
+    "encoding": "o200k_base"
+  }
+}
