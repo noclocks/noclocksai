@@ -2,9 +2,27 @@
 % Please edit documentation in R/utils.R
 \name{pkg_sys}
 \alias{pkg_sys}
+\alias{pkg_sys_template}
+\alias{pkg_sys_prompt}
+\alias{pkg_sys_extdata}
+\alias{pkg_sys_config}
+\alias{pkg_sys_database}
+\alias{pkg_sys_www}
 \title{Package System File}
 \usage{
 pkg_sys(...)
+
+pkg_sys_template(...)
+
+pkg_sys_prompt(...)
+
+pkg_sys_extdata(...)
+
+pkg_sys_config(...)
+
+pkg_sys_database(...)
+
+pkg_sys_www(...)
 }
 \arguments{
 \item{...}{Additional arguments passed to \code{system.file()}.}
@@ -14,7 +32,21 @@ A character string representing the path to the system file.
 }
 \description{
 Get the path to a system file within the package.
+
+Various other \verb{pkg_sys_*} functions are available to help with specific file paths:
+\itemize{
+\item \code{pkg_sys_template()}: Get the path to a template file.
+\item \code{pkg_sys_prompt()}: Get the path to a prompt file.
+\item \code{pkg_sys_extdata()}: Get the path to an external data file.
+\item \code{pkg_sys_config()}: Get the path to a configuration file.
+\item \code{pkg_sys_database()}: Get the path to a database file.
+\item \code{pkg_sys_www()}: Get the path to a \code{www} (i.e. Shiny App Resource) file.
+}
 }
 \examples{
+# retrieve the path to the package configuration file
 pkg_sys("config/config.yml")
+
+# or use the shorthand function dedicated for configs
+pkg_sys_config("config.yml")
 }

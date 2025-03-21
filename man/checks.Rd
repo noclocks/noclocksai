@@ -3,53 +3,183 @@
 \name{checks}
 \alias{checks}
 \alias{check_inherits}
-\alias{check_installed}
+\alias{check_s7}
+\alias{check_r6}
+\alias{check_db_conn}
+\alias{check_db_config}
 \alias{check_chat}
 \alias{check_tool}
+\alias{check_type}
+\alias{check_turn}
+\alias{check_request}
+\alias{check_response}
+\alias{check_tibble}
 \alias{check_row}
+\alias{check_col_names}
+\alias{check_list}
+\alias{check_named}
+\alias{check_names}
+\alias{check_date}
+\alias{check_path}
+\alias{check_dir}
+\alias{check_cache}
+\alias{check_installed}
+\alias{check_repo}
+\alias{check_openai_api_key}
+\alias{check_anthropic_api_key}
 \title{Check Functions}
 \usage{
 check_inherits(
-  x,
+  obj,
   class,
-  x_arg = rlang::caller_arg(x),
+  arg = rlang::caller_arg(obj),
   call = rlang::caller_env()
 )
 
-check_installed(pkg, arg = rlang::caller_arg(pkg), call = rlang::caller_env())
+check_s7(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_r6(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_db_conn(conn, arg = rlang::caller_arg(conn), call = rlang::caller_env())
+
+check_db_config(cfg, arg = rlang::caller_arg(cfg), call = rlang::caller_env())
 
 check_chat(chat, arg = rlang::caller_arg(chat), call = rlang::caller_env())
 
 check_tool(tool, arg = rlang::caller_arg(tool), call = rlang::caller_env())
 
+check_type(type, arg = rlang::caller_arg(type), call = rlang::caller_env())
+
+check_turn(turn, arg = rlang::caller_arg(turn), call = rlang::caller_env())
+
+check_request(req, arg = rlang::caller_arg(req), call = rlang::caller_env())
+
+check_response(resp, arg = rlang::caller_arg(resp), call = rlang::caller_env())
+
+check_tibble(data, arg = rlang::caller_arg(data), call = rlang::caller_env())
+
 check_row(row, arg = rlang::caller_arg(row), call = rlang::caller_env())
+
+check_col_names(
+  data,
+  req_cols,
+  arg = rlang::caller_arg(data),
+  call = rlang::caller_env()
+)
+
+check_request(req, arg = rlang::caller_arg(req), call = rlang::caller_env())
+
+check_response(resp, arg = rlang::caller_arg(resp), call = rlang::caller_env())
+
+check_list(lst, arg = rlang::caller_arg(lst), call = rlang::caller_env())
+
+check_named(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_names(
+  obj,
+  req_names,
+  arg = rlang::caller_arg(lst),
+  call = rlang::caller_env()
+)
+
+check_col_names(
+  data,
+  req_cols,
+  arg = rlang::caller_arg(data),
+  call = rlang::caller_env()
+)
+
+check_date(date, arg = rlang::caller_arg(date), call = rlang::caller_env())
+
+check_path(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
+
+check_dir(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
+
+check_cache(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
+
+check_installed(pkg, arg = rlang::caller_arg(pkg), call = rlang::caller_env())
+
+check_repo(repo, arg = rlang::caller_arg(repo), call = rlang::caller_env())
+
+check_openai_api_key(
+  api_key,
+  arg = rlang::caller_arg(api_key),
+  call = rlang::caller_env()
+)
+
+check_anthropic_api_key(
+  api_key,
+  arg = rlang::caller_arg(api_key),
+  call = rlang::caller_env()
+)
 }
 \arguments{
-\item{x}{An object to check.}
-
 \item{class}{A character string representing the class to check against.}
 
-\item{x_arg}{A character string representing the argument name.}
+\item{arg, x_arg, call}{Internal arguments used for \link[rlang:args_error_context]{rlang::args_error_context} features.}
 
-\item{call}{An environment representing the calling environment.}
+\item{req_cols}{A character vector representing the required column names.}
 
-\item{pkg}{A character string representing the package name.}
-
-\item{chat}{An \link[ellmer:Chat]{ellmer::Chat} object.}
-
-\item{tool}{An \code{\link[ellmer:tool]{ellmer::tool()}} object.}
-
-\item{row}{A single-row data frame.}
+\item{x, conn, cfg, chat, tool, data, row, req, resp, lst, date, pkg, api_key}{The object to check.}
 }
 \description{
 A collection of functions for checking the validity of function arguments.
 
-Functions:
+Below are the \code{check_} functions grouped by category:
+\subsection{Classes}{
 \itemize{
-\item \code{check_inherits()}: Check if an object inherits from a class.
-\item \code{check_installed()}: Check if a package is installed.
-\item \code{check_chat()}: Check if an object is an \link[ellmer:Chat]{ellmer::Chat} object.
+\item \code{check_inherits()}: Check if an object inherits from a specific class.
+\item \code{check_s7()}: Check if an object is an S3 object.
+\item \code{check_r6()}: Check if an object is an R6 object.
+}
+}
+
+\subsection{Database}{
+\itemize{
+\item \code{check_db_conn()}: Check if an object is a valid database connection (DBI or Pool).
+\item \code{check_db_config()}: Check if an object is a valid database configuration list.
+}
+}
+
+\subsection{\code{ellmer}}{
+\itemize{
+\item \code{check_chat()}: Check if an object is a \link[ellmer:Chat]{ellmer::Chat} object.
 \item \code{check_tool()}: Check if an object is an \code{\link[ellmer:tool]{ellmer::tool()}} object.
+\item \code{check_type()}: Check if an object is an \link[ellmer:Type]{ellmer::Type} object.
+}
+}
+
+\subsection{\code{tibble}}{
+\itemize{
+\item \code{check_tibble()}: Check if an object is a \code{\link[tibble:tibble]{tibble::tibble()}} data frame.
 \item \code{check_row()}: Check if an object is a single-row data frame.
+\item \code{check_col_names()}: Check if a data frame contains specific column names.
+}
+}
+
+\subsection{Lists}{
+\itemize{
+\item \code{check_list()}: Check if an object is a list.
+\item \code{check_list_names()}: Check if a list contains specific names.
+}
+}
+
+\subsection{Dates}{
+\itemize{
+\item \code{check_date()}: Check if an object is a valid date object.
+}
+}
+
+\subsection{Packages}{
+\itemize{
+\item \code{check_installed()}: Check if a package is installed.
+}
+}
+
+\subsection{API Keys}{
+\itemize{
+\item \code{check_openai_api_key()}: Check if an object is a valid OpenAI API key.
+\item \code{check_anthropic_api_key()}: Check if an object is a valid Anthropic API key.
+}
 }
 }

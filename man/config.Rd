@@ -2,17 +2,50 @@
 % Please edit documentation in R/config.R
 \name{config}
 \alias{config}
+\alias{cfg_get}
+\alias{cfg_list}
+\alias{get_db_config}
+\alias{get_llms_config}
 \alias{get_openai_api_key}
 \alias{set_openai_api_key}
+\alias{get_anthropic_api_key}
+\alias{set_anthropic_api_key}
 \alias{get_gemini_api_key}
 \alias{set_gemini_api_key}
 \alias{get_gmaps_api_key}
 \alias{set_gmaps_api_key}
 \title{Configuration}
 \usage{
+cfg_get(
+  ...,
+  file = Sys.getenv("R_CONFIG_FILE", unset = pkg_sys_config("config.yml")),
+  config = Sys.getenv("R_CONFIG_ACTIVE", unset = "default")
+)
+
+cfg_list(
+  file = Sys.getenv("R_CONFIG_FILE", unset = pkg_sys_config("config.yml")),
+  config = Sys.getenv("R_CONFIG_ACTIVE", unset = "default")
+)
+
+get_db_config(
+  key = NULL,
+  file = Sys.getenv("R_CONFIG_FILE", pkg_sys("config/config.yml")),
+  config = Sys.getenv("R_CONFIG_ACTIVE", "default")
+)
+
+get_llms_config(
+  key = NULL,
+  file = Sys.getenv("R_CONFIG_FILE", pkg_sys("config/config.yml")),
+  config = Sys.getenv("R_CONFIG_ACTIVE", "default")
+)
+
 get_openai_api_key()
 
 set_openai_api_key(key)
+
+get_anthropic_api_key()
+
+set_anthropic_api_key(key)
 
 get_gemini_api_key()
 
@@ -30,6 +63,13 @@ Functions for managing configuration settings and environment variables.
 
 Functions:
 \itemize{
+\item \code{get_db_config()}: Get the database configuration from the configuration file.
+\item \code{get_llms_config()}: Get the LLM configuration from the configuration file.
+\item \code{get_tools_config()}: Get the tools configuration from the configuration file.
+}
+
+LLM API Keys:
+\itemize{
 \item \code{get_openai_api_key()}: Get the OpenAI API key from the configuration file.
 \item \code{set_openai_api_key()}: Set the OpenAI API key as an environment variable.
 \item \code{get_gemini_api_key()}: Get the Gemini API key from the configuration file.
@@ -38,5 +78,13 @@ Functions:
 \item \code{set_gmaps_api_key()}: Set the Google Maps API key as an environment variable.
 \item \code{get_hunterio_api_key()}: Get the Hunter.io API key from the configuration file.
 \item \code{set_hunterio_api_key()}: Set the Hunter.io API key as an environment variable.
+}
+
+Functions for managing configuration settings and environment variables.
+
+Main Functions:
+\itemize{
+\item \code{cfg_get()}: Get the configuration settings from a configuration file.
+\item \code{cfg_list()}: List the configuration settings from a configuration file.
 }
 }
