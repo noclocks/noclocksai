@@ -7,4 +7,13 @@
 #
 #  ------------------------------------------------------------------------
 
-# usethis::use_data(, internal = TRUE, overwrite = TRUE)
+source("data-raw/scripts/providers.R")
+source("data-raw/scripts/base_urls.R")
+
+usethis::use_data(
+  providers,
+  provider_base_urls,
+  internal = TRUE,
+  overwrite = TRUE,
+  version = 3
+)
