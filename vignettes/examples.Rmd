@@ -1,0 +1,189 @@
+---
+title: "Examples"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE,
+  out.width = "100%"
+)
+
+# library(noclocksai)
+pkgload::load_all()
+
+library(ellmer)
+library(DiagrammeR)
+```
+
+```{r load_cached_resources, echo=FALSE, include=FALSE}
+mermaid_vignette_resources <- qs2::qs_read(pkg_sys_extdata("vignettes/mermaid_vignette_resources.qs"))
+mermaid_code <- mermaid_vignette_resources$mermaid_code
+resp <- mermaid_vignette_resources$resp
+mermaid_workflow_code <- mermaid_vignette_resources$mermaid_workflow_code
+resp_workflow <- mermaid_vignette_resources$resp_workflow
+```
+
+## Example: Mermaid.js Diagram Generation
+
+This example demonstrates how to use `noclocksai`'s features that build on top of the `ellmer`
+package to generate a [Mermaid.js](https://mermaid-js.github.io/mermaid/#/) diagram based on a provided R code snippet. 
+The `ellmer` package provides a simple interface to interact with the OpenAI API, allowing you to generate
+the diagrams based on user-provided context or code snippets.
+
+`noclocksai` comes with a set of pre-defined prompts for generating Mermaid.js diagrams, making it easy to
+generate diagrams without having to write the prompts from scratch.
+
+In this example the following steps will be taken:
+
+1. Initialize a chat with OpenAI using the Mermaid.js system prompt.
+2. Pass an example R code snippet to the chat.
+3. Extract the generated Mermaid.js diagram code block from the response.
+4. Render the Mermaid.js diagram using the extracted code block.
+
+### Prompts
+
+The `noclocksai` package provides two prompts for generating Mermaid.js diagrams. These prompts can be found in the package's `prompts/mermaid/` installed directory and retrieved via the `noclocksai::pkg_sys_prompt()` utility function or directly called using the `prompt_mermaid_sys()` and `prompt_mermaid_user()` functions.
+
+Expand the following sections to view the Mermaid.js system and user prompts, respectively.
+
+<br>
+
+<details><summary>View [Mermaid.js System Prompt](../inst/prompts/mermaid/system.prompt.md)</summary><p>
+
+````markdown
+
+```{r child="../inst/prompts/mermaid/system.prompt.md"}
+```
+
+````
+
+</p></details>
+
+<br>
+
+<details><summary>View [Mermaid.js User Prompt](../inst/prompts/mermaid/user.prompt.md)</summary><p>
+
+````markdown
+
+```{r child="../inst/prompts/mermaid/user.prompt.md"}
+```
+
+````
+
+</p></details>
+
+### Diagram Generation Workflow
+
+The following code demonstrates how to generate a Mermaid.js diagram based on a provided R code snippet
+using the `noclocksai` package:
+
+```{r mermaid_diagram_generation_chat, eval=FALSE}
+# initialize a chat with OpenAI using the mermaid.js system prompt
+chat <- ellmer::chat_openai(
+  system_prompt = prompt_mermaid_sys(),
+  echo = TRUE,
+  api_args = list(temperature = 0)
+)
+
+# example code to pass to chat
+example <- "starwars |>
+  group_by(species) |>
+  summarise(
+    n = n(),
+    mass = mean(mass, na.rm = TRUE)
+  ) |>
+  filter(
+    n > 1,
+    mass > 50
+  )"
+
+# send the example code to the chat
+resp <- chat$chat(prompt_mermaid_user(context = example))
+```
+
+The response from the chat will contain the generated Mermaid.js diagram code block:
+
+```{r mermaid_diagram_generation_chat_output, echo=FALSE}
+cat(resp, sep = "\n")
+```
+
+Now that the chat has been initialized and the example R code snippet has been passed to the chat,
+we can extract the generated Mermaid.js diagram code block from the response using the
+provided utility function `extract_code()`:
+
+```{r extract_mermaid_diagram_code, eval=FALSE}
+# extract mermaid diagram code block from response
+mermaid_code <- extract_code(resp, lang = "mermaid", print = TRUE)
+```
+
+preview the extracted Mermaid.js diagram code block:
+
+```{r extract_mermaid_diagram_code_output, echo=FALSE}
+cat(mermaid_code, sep = "\n")
+```
+
+Then you can use this generated Mermaid.js code block to render a diagram for the example R code:
+
+```{r render_mermaid_diagram, out.height="400px", fig.dim=c(6,4), fig.align="center", fig.cap="Mermaid.js Diagram for the Example R Code Snippet"}
+# render the mermaid diagram
+DiagrammeR::DiagrammeR(mermaid_code)
+```
+
+<br>
+
+The generated Mermaid.js diagram should represent the flow of the provided R code snippet.
+
+### Mermaid for this Workflow
+
+Let's generate a diagram for the workflow defined above:
+
+```{r mermaid_workflow, eval=FALSE}
+workflow <- "
+1. Initialize a chat with OpenAI using the mermaid.js system prompt
+2. Pass an example R code snippet to the chat
+3. Extract the generated Mermaid.js diagram code block from the response
+4. Render the Mermaid.js diagram using the extracted code block
+"
+
+resp <- chat$chat(prompt_mermaid_user(context = workflow))
+```
+
+The response from the chat will contain the generated Mermaid.js diagram code block:
+
+```{r mermaid_workflow_output, eval=FALSE}
+cat(resp_workflow, sep = "\n")
+```
+
+Extract the generated Mermaid.js diagram code block:
+
+```{r extract_mermaid_workflow_code, eval=FALSE}
+# extract mermaid diagram code block from response
+mermaid_workflow_code <- extract_code(resp, lang = "mermaid", print = TRUE)
+```
+
+preview the extracted Mermaid.js diagram code block:
+
+```{r extract_mermaid_workflow_code_output, eval=FALSE}
+cat(mermaid_workflow_code, sep = "\n")
+```
+
+Render the Mermaid.js diagram for this workflow:
+
+```{r render_mermaid_workflow, out.height="400px", fig.dim=c(6,4), fig.align="center", fig.cap="Mermaid.js Diagram for the Workflow of Generating a Mermaid.js Diagram"}
+# render the mermaid diagram
+DiagrammeR::DiagrammeR(mermaid_workflow_code)
+```
+
+<br>
+
+The generated Mermaid.js diagram should represent the workflow of generating a Mermaid.js diagram based on an R code snippet.
