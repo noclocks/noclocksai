@@ -36,6 +36,7 @@ initialize_chat <- function(
     model = "gpt-4o",
     system_prompt = prompt_default_sys(),
     tools = NULL,
+    temperature = 0,
     api_key = get_openai_api_key(),
     ...
 ) {
@@ -44,6 +45,7 @@ initialize_chat <- function(
     model = model,
     system_prompt = system_prompt,
     api_key = api_key,
+    api_args = list(temperature = temperature),
     ...
   )
 
@@ -54,4 +56,33 @@ initialize_chat <- function(
   return(chat)
 
 }
+
+chat_eda <- function(
+  data,
+  chat = NULL,
+  ...
+) {
+
+  check_data_frame(data)
+
+  sys_prompt <- prompt_eda_sys()
+
+  if (is.null(chat)) {
+    chat <- initialize_chat(system_prompt = prompt_eda_sys())
+  } else {
+    check_chat(chat)
+    old_sys_prompt <- chat$get_system_prompt()
+    withr::defer(chat$set_system_prompt(old_sys_prompt))
+    chat$set_system_prompt(prompt_eda_sys())
+  }
+
+  check_chat(chat)
+
+  prompt <- prompt_eda_user(data)
+
+  chat$chat(prompt, ...)
+
+}
+
+
 
