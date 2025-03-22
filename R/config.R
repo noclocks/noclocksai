@@ -424,6 +424,33 @@ get_llms_config <- function(
 }
 
 
+# api keys --------------------------------------------------------------------------------------------------------
+
+get_api_key <- function(name, ...) {
+
+  llms_cfg <- get_llms_config()
+  tools_cfg <- config::get("tools")
+
+  key_name <- paste0(name, "_api_key")
+
+  if (key_name %in% names(llms_cfg)) {
+    return(llms_cfg[[key_name]])
+  }
+
+  if (key_name %in% names(tools_cfg)) {
+    return(tools_cfg[[key_name]])
+  }
+
+  cli::cli_abort(
+    c(
+      "API key: {.field {key_name}} not found in configuration file: {.file {file}}.\n",
+      "Please check the configuration file for the correct key."
+    )
+  )
+
+}
+
+
 
 # openai ----------------------------------------------------------------------------------------------------------
 
