@@ -12,7 +12,7 @@
 #' @keywords internal
 #' @noRd
 #' @importFrom rlang run_on_load
-.onLoan <- function(libname, pkgname) {
+.onLoad <- function(libname, pkgname) {
   rlang::run_on_load()
 }
 

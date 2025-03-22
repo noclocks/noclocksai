@@ -75,7 +75,7 @@ logger_init <- function(
 
   # formatter
   if (is.null(formatter)) {
-    formatter <- logger::formatter_json
+    formatter <- logger::formatter_glue
   }
   assign("formatter", formatter, envir = .logger_env)
 
@@ -281,8 +281,7 @@ logger_hooks_reset <- function() {
   pkg_name <- "noclocksai"
   log_dir <- file.path(rappdirs::user_log_dir(pkg_name))
 
-  dir_created <- dir.create(log_dir, recursive = TRUE, showWarnings = FALSE)
-  if (!dir_created) { warning("Could not create log directory: ", log_dir) }
+  dir.create(log_dir, recursive = TRUE, showWarnings = FALSE)
   log_file <- paste0(pkg_name, ".", extension)
   file.path(log_dir, log_file)
 }
@@ -446,6 +445,6 @@ logger_hooks_reset <- function() {
 
 rlang::on_load(
   expr = {
-    .logger_hooks_init()
+    logger_init()
   }
 )

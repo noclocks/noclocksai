@@ -644,7 +644,7 @@ set_gmaps_api_key <- function(key) {
 .default_config_path <- function() {
   normalizePath(
     rappdirs::user_config_dir(
-      appname = "cspr",
+      appname = "noclocksai",
       appauthor = "noclocks",
       expand = TRUE,
       os = "unix"
