@@ -8,6 +8,7 @@
 
 ## Bug Fixes
 
+- Update .gitattributes to include HTML files as generated ([a98f313](https://github.com/noclocks/noclocksai/commit/a98f313afdf093f2b0241b1f3211982b3bd6bc62))  - (Jimmy Briggs)
 - **config:** Fix symlink to be relative ([d14f36a](https://github.com/noclocks/noclocksai/commit/d14f36acbcb5c7f0f3962609a01f6913ab8b247d))  - (Jimmy Briggs)
 
 ## Configuration
