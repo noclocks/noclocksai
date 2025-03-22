@@ -85,9 +85,8 @@ The package includes a robust type system for parameter validation:
 
 You can install the development version of noclocksai from GitHub:
 
-```r
-# install.packages("remotes")
-remotes::install_github("noclocks/noclocksai")
+```R
+pak::pak("noclocks/noclocksai")
 ```
 
 ### System Requirements
