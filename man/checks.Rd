@@ -116,7 +116,7 @@ check_anthropic_api_key(
 \arguments{
 \item{class}{A character string representing the class to check against.}
 
-\item{arg, x_arg, call}{Internal arguments used for \link[rlang:args_error_context]{rlang::args_error_context} features.}
+\item{arg, arg, call}{Internal arguments used for \link[rlang:args_error_context]{rlang::args_error_context} features.}
 
 \item{req_cols}{A character vector representing the required column names.}
 

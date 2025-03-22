@@ -9,7 +9,7 @@ extract_and_format_code(
   language = "R",
   keep_comments = TRUE,
   style = list(),
-  separator = "\\n\\n"
+  separator = `\\n\\n`
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ extract_and_format_code(
 
 \item{style}{A list of formatting options for format_code.}
 
-\item{separator}{String used to join blocks (default: "\n\n").}
+\item{separator}{String used to join blocks (default: \verb{\\n\\n}).}
 }
 \value{
 A single string containing all merged and formatted code blocks.

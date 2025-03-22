@@ -62,11 +62,11 @@ extract_code_blocks <- function(markdown_text, language = "R") {
 #'
 #' @param markdown_text The markdown text containing code blocks.
 #' @param language The language identifier to extract (default: "R").
-#' @param separator String used to join blocks (default: "\n\n").
+#' @param separator String used to join blocks (default: `\n\n`).
 #'
 #' @return A single string containing all merged code blocks.
 #' @export
-merge_code_blocks <- function(markdown_text, language = "R", separator = "\n\n") {
+merge_code_blocks <- function(markdown_text, language = "R", separator = `\n\n`) {
   blocks <- extract_code_blocks(markdown_text, language)
 
   if (length(blocks) == 0) {
@@ -163,14 +163,16 @@ format_code <- function(code, keep_comments = TRUE, style = list()) {
 #' @param language The language identifier to extract (default: "R").
 #' @param keep_comments Whether to keep comments when formatting (default: TRUE).
 #' @param style A list of formatting options for format_code.
-#' @param separator String used to join blocks (default: "\n\n").
+#' @param separator String used to join blocks (default: `\n\n`).
 #'
-#' @return A single string containing all merged and formatted code blocks.
+#' @returns
+#' A single string containing all merged and formatted code blocks.
+#'
 #' @export
 extract_and_format_code <- function(markdown_text, language = "R",
                                     keep_comments = TRUE,
                                     style = list(),
-                                    separator = "\n\n") {
+                                    separator = `\n\n`) {
   blocks <- extract_code_blocks(markdown_text, language)
 
   if (length(blocks) == 0) {

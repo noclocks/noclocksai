@@ -2,7 +2,23 @@
 % Please edit documentation in R/types.R
 \name{types}
 \alias{types}
+\alias{type_gmaps_response}
+\alias{type_gmaps_geocode_response}
+\alias{type_gmaps_places_search_response}
+\alias{type_gmaps_place_details_response}
+\alias{type_dataset_docs}
 \title{Custom Type Definitions}
+\usage{
+type_gmaps_response()
+
+type_gmaps_geocode_response()
+
+type_gmaps_places_search_response()
+
+type_gmaps_place_details_response()
+
+type_dataset_docs()
+}
 \description{
 Functions for defining and maintaining various custom \link[ellmer:Type]{ellmer::Type} definitions.
 }
