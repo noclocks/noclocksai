@@ -25,6 +25,7 @@
 
 ## Features
 
+- **namespace:** Add multiple exports for configuration and utility functions ([172d08d](https://github.com/noclocks/noclocksai/commit/172d08db84011468c748ed68be93d6a82280af66))  - (Jimmy Briggs)
 - Add new exports and update configuration ([5583ef3](https://github.com/noclocks/noclocksai/commit/5583ef3e8c51e25efb32c80222a14c82301f543d))  - (Jimmy Briggs)
 - **agents:** Refactor agent class and add new agent functions ([a323e81](https://github.com/noclocks/noclocksai/commit/a323e81fef7aeb7d795355e2274cd67dad20c34c))  - (Jimmy Briggs)
 - **docs:** Enhance README with tool registration and Mermaid diagram example ([e001dcb](https://github.com/noclocks/noclocksai/commit/e001dcbf1ed9464db908a14da05f88ec19ef9812))  - (Jimmy Briggs)
@@ -82,6 +83,7 @@
 
 ## Refactoring
 
+- **NAMESPACE:** Remove unnecessary exports from NAMESPACE ([e83d979](https://github.com/noclocks/noclocksai/commit/e83d979d29f21d6ae11ce9d4a8bb176f12e8f11b))  - (Jimmy Briggs)
 - **logger:** Remove unused logging functions and documentation ([3e30b30](https://github.com/noclocks/noclocksai/commit/3e30b302fdf1b6dea86d61b309467bee3f6ccbd0))  - (Jimmy Briggs)
 - **checks:** Update argument naming in checks functions ([67e61d1](https://github.com/noclocks/noclocksai/commit/67e61d184570c8e9faca665ab685839cb39a14f2))  - (Jimmy Briggs)
 - **pkgdown:** Streamline YAML extraction process ([6ea8f8d](https://github.com/noclocks/noclocksai/commit/6ea8f8de3819966249625c47e3828e88ae18ebb0))  - (Jimmy Briggs)
