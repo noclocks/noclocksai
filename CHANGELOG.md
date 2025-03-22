@@ -24,6 +24,7 @@
 
 ## Features
 
+- Add new exports and update configuration ([5583ef3](https://github.com/noclocks/noclocksai/commit/5583ef3e8c51e25efb32c80222a14c82301f543d))  - (Jimmy Briggs)
 - **agents:** Refactor agent class and add new agent functions ([a323e81](https://github.com/noclocks/noclocksai/commit/a323e81fef7aeb7d795355e2274cd67dad20c34c))  - (Jimmy Briggs)
 - **docs:** Enhance README with tool registration and Mermaid diagram example ([e001dcb](https://github.com/noclocks/noclocksai/commit/e001dcbf1ed9464db908a14da05f88ec19ef9812))  - (Jimmy Briggs)
 - **cicd:** Add R-CMD-Check workflow for R package validation ([7a04a33](https://github.com/noclocks/noclocksai/commit/7a04a331e0af65a6d0c6c045dc965c17e40c5fdc))  - (Jimmy Briggs)
@@ -80,6 +81,7 @@
 
 ## Refactoring
 
+- **logger:** Remove unused logging functions and documentation ([3e30b30](https://github.com/noclocks/noclocksai/commit/3e30b302fdf1b6dea86d61b309467bee3f6ccbd0))  - (Jimmy Briggs)
 - **checks:** Update argument naming in checks functions ([67e61d1](https://github.com/noclocks/noclocksai/commit/67e61d184570c8e9faca665ab685839cb39a14f2))  - (Jimmy Briggs)
 - **pkgdown:** Streamline YAML extraction process ([6ea8f8d](https://github.com/noclocks/noclocksai/commit/6ea8f8de3819966249625c47e3828e88ae18ebb0))  - (Jimmy Briggs)
 - **checks:** Enhance argument validation functions and improve documentation ([8142232](https://github.com/noclocks/noclocksai/commit/814223232273ee92071a0f04ad5741bdf8a8d170))  - (Jimmy Briggs)
