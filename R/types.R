@@ -15,6 +15,9 @@
 #' Functions for defining and maintaining various custom [ellmer::Type] definitions.
 NULL
 
+#' @rdname types
+#' @export
+#' @importFrom ellmer type_string type_object type_array type_number type_boolean
 type_gmaps_response <- function() {
 
   ellmer::type_object(
@@ -24,6 +27,9 @@ type_gmaps_response <- function() {
 
 }
 
+#' @rdname types
+#' @export
+#' @importFrom ellmer type_string type_object type_array type_number type_boolean
 type_gmaps_geocode_response <- function() {
 
   ellmer::type_object(
@@ -68,6 +74,9 @@ type_gmaps_geocode_response <- function() {
 
 }
 
+#' @rdname types
+#' @export
+#' @importFrom ellmer type_string type_object type_array type_number type_boolean
 type_gmaps_places_search_response <- function() {
   ellmer::type_object(
     status = ellmer::type_string(description = "API Response Status Message", required = TRUE),
@@ -102,6 +111,9 @@ type_gmaps_places_search_response <- function() {
   )
 }
 
+#' @rdname types
+#' @export
+#' @importFrom ellmer type_string type_object type_array type_number type_boolean
 type_gmaps_place_details_response <- function() {
   ellmer::type_object(
     .description = "Google Maps Place Details API Response",
@@ -153,6 +165,9 @@ type_gmaps_place_details_response <- function() {
   )
 }
 
+#' @rdname types
+#' @export
+#' @importFrom ellmer type_string type_object type_array type_number type_boolean
 type_dataset_docs <- function() {
 
   ellmer::type_object(
@@ -182,3 +197,29 @@ type_dataset_docs <- function() {
   )
 
 }
+
+# internal custom types -------------------------------------------------------------------------------------------
+
+#' @keywords internal
+#' @noRd
+#' @importFrom ellmer type_string type_object type_array type_number type_boolean
+.extract_code_types <- list(
+  text = ellmer::type_string("Text containing code block(s).", required = TRUE),
+  lang = ellmer::type_string("Language of code block to extract (i.e. 'r', 'python', 'sql', etc.).", required = FALSE)
+)
+
+#' @keywords internal
+#' @noRd
+#' @importFrom ellmer type_string
+.gmaps_geocode_address_types <- list(
+  address = ellmer::type_string("The address to geocode.", required = TRUE)
+)
+
+#' @keywords internal
+#' @noRd
+#' @importFrom ellmer type_string type_number
+.gmaps_places_search_types <- list(
+  query = ellmer::type_string("The search query to find places.", required = TRUE),
+  address = ellmer::type_string("The address to search for places near.", required = FALSE),
+  radius = ellmer::type_number("The radius in meters to search for places near the address.", required = FALSE)
+)
