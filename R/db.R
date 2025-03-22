@@ -74,6 +74,28 @@ db_connect <- function(db_config = get_db_config(), pool = TRUE, ...) {
 
 }
 
+
+# query -----------------------------------------------------------------------------------------------------------
+
+db_query <- function(conn, query) {
+
+  check_db_conn(conn)
+  if (inherits(conn, "Pool")) {
+    pool <- conn
+    conn <- pool::poolCheckout(conn)
+    withr::defer(pool::poolReturn(conn))
+  }
+
+  tryCatch({
+    result <- DBI::dbGetQuery(conn, query)
+    return(as.data.frame(result))
+  }, error = function(e) {
+    cli::cli_alert_danger("Error executing query: {e$message}")
+    return(character(0))
+  })
+
+}
+
 db_schema_info <- function(pool, schema = NULL) {
 
   check_db_conn(pool)
