@@ -14,3 +14,6 @@
 ^Dockerfile$
 ^data-raw$
 ^CHANGELOG\.md$
+^examples$
+^doc$
+^Meta$

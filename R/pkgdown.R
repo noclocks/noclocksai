@@ -58,11 +58,9 @@ generate_pkgdown_reference <- function(
   )
 
   resp <- chat$chat(user_prompt)
-  resp_yaml <- extract_yaml(resp)
+  resp_yaml <- extract_code(resp, "yaml")
 
-  if (is.null(resp_yaml)) {
-    return(NULL)
-  }
+  if (is.null(resp_yaml)) { return(NULL) }
 
   # get existing yaml, remove reference section if it exists, and add new yaml reference section
   new_yaml <- yaml::as.yaml(

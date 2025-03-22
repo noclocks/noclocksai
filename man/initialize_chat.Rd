@@ -8,6 +8,7 @@ initialize_chat(
   model = "gpt-4o",
   system_prompt = prompt_default_sys(),
   tools = NULL,
+  temperature = 0,
   api_key = get_openai_api_key(),
   ...
 )
