@@ -24,6 +24,7 @@
 
 ## Features
 
+- **docs:** Enhance README with tool registration and Mermaid diagram example ([e001dcb](https://github.com/noclocks/noclocksai/commit/e001dcbf1ed9464db908a14da05f88ec19ef9812))  - (Jimmy Briggs)
 - **cicd:** Add R-CMD-Check workflow for R package validation ([7a04a33](https://github.com/noclocks/noclocksai/commit/7a04a331e0af65a6d0c6c045dc965c17e40c5fdc))  - (Jimmy Briggs)
 - **embed:** Enhance embedding functions with improved documentation and batch processing ([0d867d9](https://github.com/noclocks/noclocksai/commit/0d867d9d131330258905e705b736b8c035a3900d))  - (Jimmy Briggs)
 - **agent:** Implement Agent class for managing AI agents ([3b489d0](https://github.com/noclocks/noclocksai/commit/3b489d0d6852d539ed367c95971527677b82f0a2))  - (Jimmy Briggs)
