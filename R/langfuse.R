@@ -403,7 +403,7 @@ lf_add_feedback <- function(result, score, comment = NULL, langfuse_client) {
 
   # Validate score
   if (!is.numeric(score) || score < 0 || score > 1) {
-    cli::cli_alert_error("Score must be a numeric value between 0 and 1")
+    cli::cli_alert_danger("Score must be a numeric value between 0 and 1")
     return(invisible(FALSE))
   }
 
