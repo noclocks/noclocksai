@@ -1,8 +1,9 @@
 # noclocksai <img src="man/figures/logo.png" align="right" height="120" alt="" />
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/noclocks/noclocksai/graph/badge.svg)](https://app.codecov.io/gh/noclocks/noclocksai)
-[![R-CMD-check](https://github.com/noclocks/noclocksai/workflows/R-CMD-check/badge.svg)](https://github.com/noclocks/noclocksai/actions)
+[![Test Coverage](https://github.com/noclocks/noclocksai/actions/workflows/coverage.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/coverage.yml)
+[![R-CMD-Check](https://github.com/noclocks/noclocksai/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/rcmdcheck.yml)
+[![Automate Changelog](https://github.com/noclocks/noclocksai/actions/workflows/changelog.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/changelog.yml)
 <!-- badges: end -->
 
 ## Overview
