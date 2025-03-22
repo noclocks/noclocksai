@@ -16,6 +16,8 @@
 
 ## Documentation
 
+- Update installation instructions in README.md ([151f968](https://github.com/noclocks/noclocksai/commit/151f96876724ab33c5818836428134673e6fa37f))  - (Jimmy Briggs)
+- Update README.md badges for test coverage and CI workflows ([851ecd3](https://github.com/noclocks/noclocksai/commit/851ecd3fdd73b534ee2e1e338aeba4f5fa5616d0))  - (Jimmy Briggs)
 - Update README.md to include AI capabilities and PostgreSQL examples ([742325d](https://github.com/noclocks/noclocksai/commit/742325df99c02ecea1ccb849d1fef525fe147b65))  - (Jimmy Briggs)
 - Update README.md to enhance package overview and usage examples ([73dd696](https://github.com/noclocks/noclocksai/commit/73dd6966f69870497f19d63193aaafe70f8191d7))  - (Jimmy Briggs)
 - Create dev docs rag-tools.md ([f962a5f](https://github.com/noclocks/noclocksai/commit/f962a5f7d0b3c0e290b8cf6e48e61b1b9d0dfd50))  - (Jimmy Briggs)
