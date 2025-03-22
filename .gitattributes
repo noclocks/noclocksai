@@ -21,4 +21,4 @@ docs/** linguist-documentation
 vignettes/** linguist-documentation
 *.{js,css,scss,less} linguist-vendored
 *.{min.js,min.css} linguist-generated
-
+*.html linguist-generated
