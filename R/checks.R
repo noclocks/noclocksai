@@ -60,7 +60,7 @@
 #' @param x,conn,cfg,chat,tool,data,row,req,resp,lst,date,pkg,api_key The object to check.
 #' @param class A character string representing the class to check against.
 #' @param req_cols A character vector representing the required column names.
-#' @param arg,x_arg,call Internal arguments used for [rlang::args_error_context] features.
+#' @param arg,arg,call Internal arguments used for [rlang::args_error_context] features.
 #'
 #' @importFrom cli cli_abort
 #' @importFrom rlang caller_arg caller_env
@@ -198,7 +198,7 @@ check_tibble <- function(data, arg = rlang::caller_arg(data), call = rlang::call
 #' @rdname checks
 #' @export
 check_row <- function(row, arg = rlang::caller_arg(row), call = rlang::caller_env()) {
-  check_inherits(row, "data.frame", x_arg = arg, call = call)
+  check_inherits(row, "data.frame", arg = arg, call = call)
   if (nrow(row) != 1) {
     cli::cli_abort("{.arg {arg}} must be a single-row data frame.", call = call)
   }
@@ -208,7 +208,7 @@ check_row <- function(row, arg = rlang::caller_arg(row), call = rlang::caller_en
 #' @rdname checks
 #' @export
 check_col_names <- function(data, req_cols, arg = rlang::caller_arg(data), call = rlang::caller_env()) {
-  check_inherits(data, "data.frame", x_arg = arg, call = call)
+  check_inherits(data, "data.frame", arg = arg, call = call)
   missing_cols <- setdiff(req_cols, colnames(data))
   if (length(missing_cols) > 0) {
     cli::cli_abort(
@@ -224,14 +224,14 @@ check_col_names <- function(data, req_cols, arg = rlang::caller_arg(data), call 
 #' @rdname checks
 #' @export
 check_request <- function(req, arg = rlang::caller_arg(req), call = rlang::caller_env()) {
-  check_inherits(req, "httr2_request", x_arg = arg, call = call)
+  check_inherits(req, "httr2_request", arg = arg, call = call)
   invisible(NULL)
 }
 
 #' @rdname checks
 #' @export
 check_response <- function(resp, arg = rlang::caller_arg(resp), call = rlang::caller_env()) {
-  check_inherits(resp, "httr2_response", x_arg = arg, call = call)
+  check_inherits(resp, "httr2_response", arg = arg, call = call)
   invisible(NULL)
 }
 
