@@ -17,3 +17,7 @@
 ^examples$
 ^doc$
 ^Meta$
+^repomix.config.json$
+^.repomixignore$
+^noclocksai.code-workspace$
+repomix.config.json

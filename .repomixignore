@@ -1,4 +1,35 @@
 # Add patterns to ignore here, one per line
 # Example:
-# *.log
-# tmp/
+*.log
+tmp/
+Meta/
+meta/
+doc/
+docs/
+.github/
+.vscode/
+.devcontainer/
+.Rproj.user/
+.git/
+codemeta.json
+.repomixignore
+repomix.config.json
+.lintr
+codecov.yml
+.covrignore
+Dockerfile
+compose.yml
+Makefile
+Justfile
+.editorconfig
+.gitignore
+.gitattributes
+.gitmodules
+LICENSE
+LICENSE.md
+CHANGELOG.md
+*.Rproj
+*.code-workspace
+_pkgdown.yml
+_pkgdown.yaml
+config.yml
