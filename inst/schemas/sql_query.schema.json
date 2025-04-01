@@ -1,0 +1,45 @@
+{
+  "name": "sql_query",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The SQL query statement."
+      },
+      "parameters": {
+        "type": "object",
+        "description": "Parameters to be used in the SQL query.",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "The maximum number of records to return."
+          },
+          "offset": {
+            "type": "number",
+            "description": "The number of records to skip before starting to return records."
+          },
+          "order_by": {
+            "type": "array",
+            "description": "List of columns to sort the results by.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "limit",
+          "offset",
+          "order_by"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "query",
+      "parameters"
+    ],
+    "additionalProperties": false
+  },
+  "strict": true
+}

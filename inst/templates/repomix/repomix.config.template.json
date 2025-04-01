@@ -1,7 +1,7 @@
 {
   "output": {
-    "filePath": "dev/repomix/noclocksai.repomix.txt",
-    "style": "plain",
+    "filePath": "{{output_dir}}/{{name}}.repomix.{{ext}}",
+    "style": "{{style}}",
     "parsableStyle": true,
     "fileSummary": true,
     "directoryStructure": true,
@@ -11,8 +11,8 @@
     "topFilesLength": 10,
     "showLineNumbers": true,
     "copyToClipboard": false,
-    "headerText": "Repository structure and metadata for the `noclocksai` project, formatted as plain.",
-    "instructionsFilePath": "dev/repomix/repomix-instructions.md",
+    "headerText": "{{header}}",
+    "instructionsFilePath": "{{instructions_file}}",
     "includeEmptyDirectories": false,
     "git": {
       "sortByChanges": true,

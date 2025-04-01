@@ -316,6 +316,20 @@ check_dir <- function(path, arg = rlang::caller_arg(path), call = rlang::caller_
 
 #' @rdname checks
 #' @export
+check_config_file <- function(
+  path = Sys.getenv("R_CONFIG_FILE", unset = "config.yml"),
+  arg = rlang::caller_arg(path),
+  call = rlang::caller_env()
+) {
+  check_file(path, arg = arg, call = call)
+  if (tools::file_ext(path) != "yml") {
+    cli::cli_abort("{.arg {arg}} must be a valid YAML configuration file.", call = call)
+  }
+  invisible(NULL)
+}
+
+#' @rdname checks
+#' @export
 check_cache <- function(path, arg = rlang::caller_arg(path), call = rlang::caller_env()) {
   check_dir(path, arg = arg, call = call)
   if (!file.exists(file.path(path, "cache"))) {
@@ -345,6 +359,46 @@ check_repo <- function(repo, arg = rlang::caller_arg(repo), call = rlang::caller
     cli::cli_abort("{.arg {arg}} must be in the format 'user/repo'.", call = call)
   }
   invisible(NULL)
+}
+
+#' @rdname checks
+#' @export
+check_api_key <- function(api_key, arg = rlang::caller_arg(api_key), call = rlang::caller_env()) {
+
+  if (exists(api_key)) {
+    cli::cli_alert_success("API key {.arg {arg}} found in function arguments or R environment.")
+    return(invisible(NULL))
+  }
+
+  envvar_name <- toupper(paste0(api_key, "_API_KEY"))
+  if (Sys.getenv(envvar_name) != "") {
+    cli::cli_alert_success("API key {.arg {arg}} found in environment variable: {.envvar {envvar_name}}.")
+    return(invisible(NULL))
+  }
+
+  if (isTRUE(rlang::env_has(env = .pkg_env, "pkg_version"))) {
+    cli::cli_alert_success("API key {.arg {arg}} found in package environment.")
+    return(invisible(NULL))
+  }
+
+  optname <- paste0("noclocksai.", api_key, "_api_key")
+  if (getOption(optname) != "") {
+    cli::cli_alert_success("API key {.arg {arg}} found in R option: {.opt {optname}}.")
+    return(invisible(NULL))
+  }
+
+  if (get_llms_config(paste0(api_key, "_api_key")) != "") {
+    cli::cli_alert_success("API key {.arg {arg}} found in configuration file.")
+    return(invisible(NULL))
+  }
+
+  cli::cli_abort(
+    c(
+      "API key {.arg {arg}} not found in function arguments, environment variables, package environment, R options, or configuration file.",
+      "Please provide a valid API key."
+    )
+  )
+
 }
 
 #' @rdname checks

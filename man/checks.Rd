@@ -22,9 +22,11 @@
 \alias{check_date}
 \alias{check_path}
 \alias{check_dir}
+\alias{check_config_file}
 \alias{check_cache}
 \alias{check_installed}
 \alias{check_repo}
+\alias{check_api_key}
 \alias{check_openai_api_key}
 \alias{check_anthropic_api_key}
 \title{Check Functions}
@@ -95,11 +97,23 @@ check_path(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
 
 check_dir(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
 
+check_config_file(
+  path = Sys.getenv("R_CONFIG_FILE", unset = "config.yml"),
+  arg = rlang::caller_arg(path),
+  call = rlang::caller_env()
+)
+
 check_cache(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
 
 check_installed(pkg, arg = rlang::caller_arg(pkg), call = rlang::caller_env())
 
 check_repo(repo, arg = rlang::caller_arg(repo), call = rlang::caller_env())
+
+check_api_key(
+  api_key,
+  arg = rlang::caller_arg(api_key),
+  call = rlang::caller_env()
+)
 
 check_openai_api_key(
   api_key,

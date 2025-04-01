@@ -1,0 +1,122 @@
+{
+  "name": "geocode_response",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "description": "The status of the geocoding request."
+      },
+      "results": {
+        "type": "array",
+        "description": "An array of results returned by the geocoding request.",
+        "items": {
+          "$ref": "#/$defs/geocode_result"
+        }
+      },
+      "error_message": {
+        "type": "string",
+        "description": "A string containing any error message related to the geocoding request."
+      }
+    },
+    "required": [
+      "status",
+      "results",
+      "error_message"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "geocode_result": {
+        "type": "object",
+        "description": "A single geocoding result.",
+        "properties": {
+          "formatted_address": {
+            "type": "string",
+            "description": "The full address formatted as a string."
+          },
+          "geometry": {
+            "type": "object",
+            "description": "Contains the geometry information of the geocoding result.",
+            "properties": {
+              "location": {
+                "type": "object",
+                "description": "The geographical location of the result.",
+                "properties": {
+                  "lat": {
+                    "type": "number",
+                    "description": "The latitude of the result."
+                  },
+                  "lng": {
+                    "type": "number",
+                    "description": "The longitude of the result."
+                  }
+                },
+                "required": [
+                  "lat",
+                  "lng"
+                ],
+                "additionalProperties": false
+              },
+              "viewport": {
+                "type": "object",
+                "description": "The viewport for the recommended map display.",
+                "properties": {
+                  "northeast": {
+                    "type": "object",
+                    "description": "Northeast corner of the viewport.",
+                    "properties": {
+                      "lat": {
+                        "type": "number"
+                      },
+                      "lng": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "lat",
+                      "lng"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "southwest": {
+                    "type": "object",
+                    "description": "Southwest corner of the viewport.",
+                    "properties": {
+                      "lat": {
+                        "type": "number"
+                      },
+                      "lng": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "lat",
+                      "lng"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "northeast",
+                  "southwest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "location",
+              "viewport"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "formatted_address",
+          "geometry"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "strict": true
+}
