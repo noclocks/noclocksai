@@ -1,8 +1,9 @@
 # noclocksai <img src="man/figures/logo.png" align="right" height="120" alt="" />
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/noclocks/noclocksai/graph/badge.svg)](https://app.codecov.io/gh/noclocks/noclocksai)
-[![R-CMD-check](https://github.com/noclocks/noclocksai/workflows/R-CMD-check/badge.svg)](https://github.com/noclocks/noclocksai/actions)
+[![Test Coverage](https://github.com/noclocks/noclocksai/actions/workflows/coverage.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/coverage.yml)
+[![R-CMD-Check](https://github.com/noclocks/noclocksai/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/rcmdcheck.yml)
+[![Automate Changelog](https://github.com/noclocks/noclocksai/actions/workflows/changelog.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/changelog.yml)
 <!-- badges: end -->
 
 ## Overview
@@ -84,9 +85,8 @@ The package includes a robust type system for parameter validation:
 
 You can install the development version of noclocksai from GitHub:
 
-```r
-# install.packages("remotes")
-remotes::install_github("noclocks/noclocksai")
+```R
+pak::pak("noclocks/noclocksai")
 ```
 
 ### System Requirements
@@ -115,26 +115,79 @@ chat$chat("What is the R programming language?")
 
 ### Using Geocoding and Weather APIs
 
-```r
-# Get coordinates for a location
-coords <- geocode("New York City")
+Below is an example of registering some tools for the chat agent to use:
 
-# Get weather information
-weather <- get_weather(
-  lat = coords[[1]]$lat,
-  lon = coords[[1]]$lon,
-  units = "metric"
+```r
+register_tools(
+  chat,
+  tools = list(
+    tool_current_time(),
+    tool_geocode_location(),
+    tool_get_weather()
+  )
 )
+# ✔ Successfully registered tool: get_current_time
+# ✔ Successfully registered tool: geocode_location
+# ✔ Successfully registered tool: get_weather
+# ✔ Successfully registered 3 tools.
+```
+
+Now you can ask the agent about the current time or weather:
+
+```r
+# chat with tools
+chat$chat("What is the current time?")
+# [1] "The current time is 21:06:05 EDT on March 21, 2025."
+chat$chat("What is the weather in Atlanta?")
+# [1] "The current weather in Atlanta is clear with a temperature of 11.75°C. The wind is blowing at 2.75 m/s from the west, and the humidity is 34%."
 ```
 
 ### Creating Mermaid Diagrams
 
 ```r
-# Generate a flowchart from text description
-create_mermaid_diagram(
-  prompt = "Create a flowchart showing the process of data analysis in R"
+# initialize agent
+mermaid_agent <- initialize_chat(system_prompt = prompt_mermaid_sys())
+
+# example code for a diagram
+example <- "starwars |>
+  group_by(species) |>
+  summarise(
+    n = n(),
+    mass = mean(mass, na.rm = TRUE)
+  ) |>
+  filter(
+    n > 1,
+    mass > 50
+  )"
+
+# prompt for mermaid diagram
+resp <- create_mermaid_diagram(
+  mermaid_agent,
+  prompt_mermaid_user(code = example)
 )
+resp
+#```mermaid
+#graph TD
+#    A[starwars dataset] --> B[Group by species]
+#    B --> C[Summarise]
+#    C -->|Calculate n = count of species| D
+#    C -->|Calculate mass = mean mass of species| D
+#    D --> E[Filter]
+#    E -->|n > 1| F[Filtered Data]
+#    E -->|mass > 50| F[Filtered Data]
+#```
+
+# extract code & render diagram
+extract_code(resp, "mermaid") |> Diagrammer::Diagrammer()
 ```
+
+<center>
+
+![mermaid-diagram-example](man/figures/mermaid.png)
+
+
+</center>
+
 
 ### Extracting Code from Text
 

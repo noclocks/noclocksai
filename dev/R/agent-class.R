@@ -1,29 +1,46 @@
 # class -----------------------------------------------------------------------------------------------------------
 
-#' @field memory List of conversation memory entries
-memory = NULL,
+#' Agent Class
+#'
+#' @description
+#' The Agent class provides a framework for creating and managing AI agents with
+#' memory, tools, and vector store capabilities.
+#'
+#' @export
+Agent <- R6::R6Class(
+  "Agent",
+  public = list(
+    #' @field chat The ellmer Chat object
+    chat = NULL,
 
-#' @field prompts List of prompts used by the agent
-prompts = NULL,
+    #' @field memory List of conversation memory entries
+    memory = NULL,
 
-#' @field resources List of resources available to the agent
-resources = NULL,
+    #' @field prompts List of prompts used by the agent
+    prompts = NULL,
 
-#' @field config List of configuration settings
-config = NULL,
+    #' @field resources List of resources available to the agent
+    resources = NULL,
 
-#' @field vector_store Vector store configuration and connection
-vector_store = NULL,
+    #' @field config List of configuration settings
+    config = NULL,
 
-#' @param provider Provider for the chat model ("openai", "anthropic", "gemini", "ollama", "groq")
-#' @param model Model name to use
-#' @param system_prompt System prompt for the chat
-#' @param name Name of the agent (optional)
-#' @param prompts List of additional prompts
-#' @param config Configuration settings
-#' @param resources List of resources
-#' @param ... Additional arguments passed to the chat function
-initialize = function(
+    #' @field vector_store Vector store configuration and connection
+    vector_store = NULL,
+
+    #' @field name Name of the agent
+    name = NULL,
+
+    #' @description Initialize a new Agent
+    #' @param provider Provider for the chat model ("openai", "anthropic", "gemini", "ollama", "groq")
+    #' @param model Model name to use
+    #' @param system_prompt System prompt for the chat
+    #' @param name Name of the agent (optional)
+    #' @param prompts List of additional prompts
+    #' @param config Configuration settings
+    #' @param resources List of resources
+    #' @param ... Additional arguments passed to the chat function
+    initialize = function(
     provider = c("openai", "anthropic", "gemini", "ollama", "groq"),
     model = "gpt-4o",
     system_prompt = NULL,
@@ -46,110 +63,14 @@ initialize = function(
     ),
     resources = list(),
     ...
-) {
-  # Validate provider
-  provider <- match.arg(provider)
-
-  # Set name
-  self$name <- name %||% paste0(provider, "-", model, "-agent")
-
-  # Get appropriate chat function
-  chat_func <- switch(
-    provider,
-    "openai" = ellmer::chat_openai,
-    "anthropic" = ellmer::chat_claude,
-    "gemini" = ellmer::chat_gemini,
-    "ollama" = ellmer::chat_ollama,
-    "groq" = ellmer::chat_groq
-  )
-
-  # Initialize chat
-  self$chat <- chat_func(
-    model = model,
-    system_prompt = system_prompt,
-    api_args = list(
-      temperature = config$temperature,
-      max_tokens = config$max_tokens,
-      timeout_ms = config$timeout
-    ),
-    echo = config$echo,
-    ...
-  )
-
-  # Set prompts
-  self$prompts <- list(
-    system = system_prompt,
-    user = prompts
-  )
-
-  # Set resources
-  self$resources <- resources
-
-  # Set config
-  self$config <- list(
-    provider = provider,
-    model = model,
-    system_prompt = system_prompt,
-    use_memory = config$use_memory,
-    capabilities = config$capabilities,
-    temperature = config$temperature,
-    max_tokens = config$max_tokens,
-    timeout = config$timeout,
-    echo = config$echo
-  )
-
-  # Initialize memory
-  self$memory <- list()
-
-  # Initialize vector store
-  self$vector_store <- list()
-
-  # Set up agent tools
-  private$setup_agent_tools()
-
-  cli::cli_alert_success(
-    "Agent {.field {self$name}} initialized using {.field {provider}} provider and the {.field {model}} model."
-  )
-},
-
-#' Agent Class
-#'
-#' @description
-#' The Agent class provides a framework for creating and managing AI agents with
-#' memory, tools, and vector store capabilities.
-#'
-#' @export
-Agent <- R6::R6Class(
-  "Agent",
-  public = list(
-    # properties -----------------------------------------------------------------------------------
-
-    #' @field name Name of the agent
-    name = NULL,
-
-    #' @field chat The [ellmer::Chat] object
-    chat = NULL,
-
-    #' @field tools List of [ellmer::tool()] objects available to the agent.
-    tools = list(),
-
-    # constructor -----------------------------------------------------------------------------------
-
-    #' @description
-    #' Initialize a new Agent
-    #'
-    initialize = function(
-    name = "Assistant",
-    provider = "openai",
-    model = "gpt-4o",
-    system_prompt = NULL,
-    tools = list(),
-    ...
     ) {
+      # Validate provider
+      provider <- match.arg(provider)
 
-      self$name <- name
+      # Set name
+      self$name <- name %||% paste0(provider, "-", model, "-agent")
 
-      check_provider(provider)
+      # Get appropriate chat function
       chat_func <- switch(
         provider,
         "openai" = ellmer::chat_openai,
@@ -159,25 +80,53 @@ Agent <- R6::R6Class(
         "groq" = ellmer::chat_groq
       )
 
-      check_model(model, provider = provider)
-
-      # create chat
+      # Initialize chat
       self$chat <- chat_func(
         model = model,
         system_prompt = system_prompt,
+        api_args = list(
+          temperature = config$temperature,
+          max_tokens = config$max_tokens,
+          timeout_ms = config$timeout
+        ),
+        echo = config$echo,
         ...
       )
 
-      check_chat(self$chat)
+      # Set prompts
+      self$prompts <- list(
+        system = system_prompt,
+        user = prompts
+      )
 
-      # tools
-      if (length(tools) > 0) {
-        register_tools(self$chat, tools)
-      }
+      # Set resources
+      self$resources <- resources
 
-      cli::cli_alert_success("Agent {.field {self$name}} initialized.")
-      invisible(self)
+      # Set config
+      self$config <- list(
+        provider = provider,
+        model = model,
+        system_prompt = system_prompt,
+        use_memory = config$use_memory,
+        capabilities = config$capabilities,
+        temperature = config$temperature,
+        max_tokens = config$max_tokens,
+        timeout = config$timeout,
+        echo = config$echo
+      )
 
+      # Initialize memory
+      self$memory <- list()
+
+      # Initialize vector store
+      self$vector_store <- list()
+
+      # Set up agent tools
+      private$setup_agent_tools()
+
+      cli::cli_alert_success(
+        "Agent {.field {self$name}} initialized using {.field {provider}} provider and the {.field {model}} model."
+      )
     },
 
     #' @description Send a query to the agent and get a response

@@ -32,7 +32,6 @@ Imports:
     httr2,
     jsonlite,
     listviewer,
-    logger,
     lubridate,
     memoise,
     parallel,
