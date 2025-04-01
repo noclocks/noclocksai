@@ -1,0 +1,67 @@
+{
+  "name": "person",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "first_name": {
+        "type": "string",
+        "description": "The person's first name."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "The person's last name."
+      },
+      "age": {
+        "type": "number",
+        "description": "The person's age."
+      },
+      "email": {
+        "type": "string",
+        "description": "The person's email address."
+      },
+      "phone": {
+        "type": "string",
+        "description": "The person's phone number."
+      },
+      "address": {
+        "type": "object",
+        "description": "The person's address information.",
+        "properties": {
+          "street": {
+            "type": "string",
+            "description": "The street name and number."
+          },
+          "city": {
+            "type": "string",
+            "description": "The city in which the person resides."
+          },
+          "state": {
+            "type": "string",
+            "description": "The state in which the person resides."
+          },
+          "zip_code": {
+            "type": "string",
+            "description": "The postal zip code."
+          }
+        },
+        "required": [
+          "street",
+          "city",
+          "state",
+          "zip_code"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "first_name",
+      "last_name",
+      "age",
+      "email",
+      "phone",
+      "address"
+    ],
+    "additionalProperties": false
+  },
+  "strict": true
+}

@@ -1,0 +1,74 @@
+{
+  "name": "google_maps_places_response",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "description": "A list of place results returned from the Google Places API",
+        "items": {
+          "type": "object",
+          "properties": {
+            "place_id": {
+              "type": "string",
+              "description": "A unique identifier for the place."
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the place."
+            },
+            "location": {
+              "type": "object",
+              "properties": {
+                "lat": {
+                  "type": "number",
+                  "description": "The latitude of the place."
+                },
+                "lng": {
+                  "type": "number",
+                  "description": "The longitude of the place."
+                }
+              },
+              "required": [
+                "lat",
+                "lng"
+              ],
+              "additionalProperties": false
+            },
+            "address": {
+              "type": "string",
+              "description": "The formatted address of the place."
+            },
+            "rating": {
+              "type": "number",
+              "description": "The rating of the place on a scale from 1 to 5."
+            },
+            "user_ratings_total": {
+              "type": "number",
+              "description": "The total number of user ratings for the place."
+            }
+          },
+          "required": [
+            "place_id",
+            "name",
+            "location",
+            "address",
+            "rating",
+            "user_ratings_total"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "status": {
+        "type": "string",
+        "description": "The status of the request."
+      }
+    },
+    "required": [
+      "results",
+      "status"
+    ],
+    "additionalProperties": false
+  },
+  "strict": true
+}
