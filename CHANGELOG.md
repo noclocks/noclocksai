@@ -13,12 +13,14 @@
 
 ## Configuration
 
+- Update build and ignore configurations ([a186b38](https://github.com/noclocks/noclocksai/commit/a186b38596d74899368eb3d0683912e2211ccb98))  - (Jimmy Briggs)
 - Update config.template.yml to include database configuration ([c0cc6e1](https://github.com/noclocks/noclocksai/commit/c0cc6e19ec8b4b8f38242254f830aecf11464ca1))  - (Jimmy Briggs)
 
 ## Documentation
 
 - Update installation instructions in README.md ([151f968](https://github.com/noclocks/noclocksai/commit/151f96876724ab33c5818836428134673e6fa37f))  - (Jimmy Briggs)
 - Update README.md badges for test coverage and CI workflows ([851ecd3](https://github.com/noclocks/noclocksai/commit/851ecd3fdd73b534ee2e1e338aeba4f5fa5616d0))  - (Jimmy Briggs)
+- Add repomix outputs and dev dir ([710cfa9](https://github.com/noclocks/noclocksai/commit/710cfa955e8c29bbf46f3789c4570f1bbc550dfa))  - (Jimmy Briggs)
 - Update README.md to include AI capabilities and PostgreSQL examples ([742325d](https://github.com/noclocks/noclocksai/commit/742325df99c02ecea1ccb849d1fef525fe147b65))  - (Jimmy Briggs)
 - Update README.md to enhance package overview and usage examples ([73dd696](https://github.com/noclocks/noclocksai/commit/73dd6966f69870497f19d63193aaafe70f8191d7))  - (Jimmy Briggs)
 - Create dev docs rag-tools.md ([f962a5f](https://github.com/noclocks/noclocksai/commit/f962a5f7d0b3c0e290b8cf6e48e61b1b9d0dfd50))  - (Jimmy Briggs)
@@ -29,6 +31,16 @@
 - Add new exports and update configuration ([5583ef3](https://github.com/noclocks/noclocksai/commit/5583ef3e8c51e25efb32c80222a14c82301f543d))  - (Jimmy Briggs)
 - **agents:** Refactor agent class and add new agent functions ([a323e81](https://github.com/noclocks/noclocksai/commit/a323e81fef7aeb7d795355e2274cd67dad20c34c))  - (Jimmy Briggs)
 - **docs:** Enhance README with tool registration and Mermaid diagram example ([e001dcb](https://github.com/noclocks/noclocksai/commit/e001dcbf1ed9464db908a14da05f88ec19ef9812))  - (Jimmy Briggs)
+- Add OpenAI API requests for diverse tasks ([5bee0ac](https://github.com/noclocks/noclocksai/commit/5bee0ac059e8326cb5572d212be56afdc8d1eb2b))  - (Jimmy Briggs)
+- **api:** Add OpenAI vector store management scripts ([1e1e301](https://github.com/noclocks/noclocksai/commit/1e1e301fdcba6d119f952a8d17b200845cd35e49))  - (Jimmy Briggs)
+- **agent:** Add R6-based agent class for AI interactions ([02a0f18](https://github.com/noclocks/noclocksai/commit/02a0f18ea30bd6ceb40e793ae27b4982314570f8))  - (Jimmy Briggs)
+- **prompts:** Add Excel data extraction prompts ([8641a4b](https://github.com/noclocks/noclocksai/commit/8641a4b951a9b84e4e6d45d341c90b7a342c55c9))  - (Jimmy Briggs)
+- Enhance check functions and restructure API docs ([cc8ff18](https://github.com/noclocks/noclocksai/commit/cc8ff18b0b7d20f6b3f152117d3e08966fd06313))  - (Jimmy Briggs)
+- **api:** Add OpenAI vector stores management ([b7ff2c8](https://github.com/noclocks/noclocksai/commit/b7ff2c83d36a66fea9522569ad5886ea888e4e60))  - (Jimmy Briggs)
+- Add new validation checks for configuration and API keys ([dd261db](https://github.com/noclocks/noclocksai/commit/dd261dbfbeeaf49a1a1a28f196c650c5357ae752))  - (Jimmy Briggs)
+- **data:** Add function to retrieve Excel metadata ([f3743ae](https://github.com/noclocks/noclocksai/commit/f3743ae12ecd25eea6b95cc64f001f5c5594e7ee))  - (Jimmy Briggs)
+- Add templates for repomix ([9722849](https://github.com/noclocks/noclocksai/commit/9722849ed23ab5c6b1f957eb4f2b8033218dd1a6))  - (Jimmy Briggs)
+- **api:** Add JSON schemas for various data models ([a1e391f](https://github.com/noclocks/noclocksai/commit/a1e391fe4010065f911315251a980228a4722d6f))  - (Jimmy Briggs)
 - **cicd:** Add R-CMD-Check workflow for R package validation ([7a04a33](https://github.com/noclocks/noclocksai/commit/7a04a331e0af65a6d0c6c045dc965c17e40c5fdc))  - (Jimmy Briggs)
 - **embed:** Enhance embedding functions with improved documentation and batch processing ([0d867d9](https://github.com/noclocks/noclocksai/commit/0d867d9d131330258905e705b736b8c035a3900d))  - (Jimmy Briggs)
 - **agent:** Implement Agent class for managing AI agents ([3b489d0](https://github.com/noclocks/noclocksai/commit/3b489d0d6852d539ed367c95971527677b82f0a2))  - (Jimmy Briggs)
@@ -85,6 +97,7 @@
 
 - **NAMESPACE:** Remove unnecessary exports from NAMESPACE ([e83d979](https://github.com/noclocks/noclocksai/commit/e83d979d29f21d6ae11ce9d4a8bb176f12e8f11b))  - (Jimmy Briggs)
 - **logger:** Remove unused logging functions and documentation ([3e30b30](https://github.com/noclocks/noclocksai/commit/3e30b302fdf1b6dea86d61b309467bee3f6ccbd0))  - (Jimmy Briggs)
+- **api:** Reorganize OpenWeather API functions ([f9671b6](https://github.com/noclocks/noclocksai/commit/f9671b6336814a6b8bfe63266dc414f765805f3d))  - (Jimmy Briggs)
 - **checks:** Update argument naming in checks functions ([67e61d1](https://github.com/noclocks/noclocksai/commit/67e61d184570c8e9faca665ab685839cb39a14f2))  - (Jimmy Briggs)
 - **pkgdown:** Streamline YAML extraction process ([6ea8f8d](https://github.com/noclocks/noclocksai/commit/6ea8f8de3819966249625c47e3828e88ae18ebb0))  - (Jimmy Briggs)
 - **checks:** Enhance argument validation functions and improve documentation ([8142232](https://github.com/noclocks/noclocksai/commit/814223232273ee92071a0f04ad5741bdf8a8d170))  - (Jimmy Briggs)
