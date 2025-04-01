@@ -307,6 +307,33 @@ create_config_template <- function(
 #'
 #' - `cfg_get()`: Get the configuration settings from a configuration file.
 #' - `cfg_list()`: List the configuration settings from a configuration file.
+#'
+#' Database Functions:
+#'
+#' - `get_db_config()`: Get the database configuration from the configuration file.
+#'
+#' LLM Functions:
+#'
+#' - `get_llms_config()`: Get the LLM configuration from the configuration file.
+#'
+#' - `get_openai_api_key()`: Get the OpenAI API key from the configuration file.
+#' - `set_openai_api_key()`: Set the OpenAI API key as an environment variable.
+#'
+#' - `get_anthropic_api_key()`: Get the Anthropic API key from the configuration file.
+#' - `set_anthropic_api_key()`: Set the Anthropic API key as an environment variable.
+#'
+#' - `get_gemini_api_key()`: Get the Gemini API key from the configuration file.
+#' - `set_gemini_api_key()`: Set the Gemini API key as an environment variable.
+#'
+#' External API Functions:
+#'
+#' - `get_gmaps_api_key()`: Get the Google Maps API key from the configuration file.
+#' - `set_gmaps_api_key()`: Set the Google Maps API key as an environment variable.
+#'
+#' @returns
+#' Each function returns the respective API key or sets it as an environment variable.
+#'
+NULL
 
 #' @rdname config
 #' @export
@@ -426,6 +453,11 @@ get_llms_config <- function(
 
 # api keys --------------------------------------------------------------------------------------------------------
 
+#' @rdname config
+#' @export
+#' @importFrom config get
+#' @importFrom cli cli_abort
+#' @importFrom rlang arg_match
 get_api_key <- function(name, ...) {
 
   llms_cfg <- get_llms_config()

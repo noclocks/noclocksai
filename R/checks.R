@@ -191,7 +191,7 @@ check_response <- function(resp, arg = rlang::caller_arg(resp), call = rlang::ca
 #' @rdname checks
 #' @export
 check_tibble <- function(data, arg = rlang::caller_arg(data), call = rlang::caller_env()) {
-  check_inherits(data, "tbl_df", obj_arg = arg, call = call)
+  check_inherits(data, "tbl_df", arg = arg, call = call)
   invisible(NULL)
 }
 
