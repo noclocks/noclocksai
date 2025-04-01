@@ -1,4 +1,5 @@
-# chain of thought ------------------------------------------------------------------------------------------------
+# structured extraction -------------------------------------------------------------------------------------------
+
 
 req <- httr2::request("https://api.openai.com/v1/responses") |>
   httr2::req_method("POST") |>
@@ -12,35 +13,32 @@ req <- httr2::request("https://api.openai.com/v1/responses") |>
       input = list(
         list(
           role = "system",
-          content = "You are a helpful math tutor. Guide the user through the solution step by step."
+          content = "You are an expert at structured data extraction. You will be given unstructured text from a research paper and should convert it into the given structure."
         ),
         list(
           role = "user",
-          content = "how can I solve 8x + 7 = -23"
+          content = "..."
         )
       ),
       text = list(
         format = list(
           type = "json_schema",
-          name = "math_reasoning",
+          name = "research_paper_extraction",
           schema = list(
             type = "object",
             properties = list(
-              steps = list(
+              title = list(type = "string"),
+              authors = list(
                 type = "array",
-                items = list(
-                  type = "object",
-                  properties = list(
-                    explanation = list(type = "string"),
-                    output = list(type = "string")
-                  ),
-                  required = c("explanation", "output"),
-                  additionalProperties = FALSE
-                )
+                items = list(type = "string")
               ),
-              final_answer = list(type = "string")
+              abstract = list(type = "string"),
+              keywords = list(
+                type = "array",
+                items = list(type = "string")
+              )
             ),
-            required = c("steps", "final_answer"),
+            required = c("title", "authors", "abstract", "keywords"),
             additionalProperties = FALSE
           ),
           strict = TRUE
