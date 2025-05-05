@@ -119,7 +119,7 @@ gmaps_places_search <- function(
     company_name,
     company_address,
     company_phone = NULL,
-    api_key = "AIzaSyA9iicnOPVX6NmifeCQNYtEhIciwdSgaOc"
+    api_key = get_gmaps_api_key()
 ) {
 
   cli::cli_alert_info("Searching for company: {.field {company_name}} at address: {.field {company_address}}.")
