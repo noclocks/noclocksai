@@ -3,8 +3,27 @@
 \name{checks}
 \alias{checks}
 \alias{check_inherits}
+\alias{check_inherits_one_of}
+\alias{check_inherits_all}
 \alias{check_s7}
 \alias{check_r6}
+\alias{check_r6_class}
+\alias{check_r6_object}
+\alias{check_function}
+\alias{check_expression}
+\alias{check_cache}
+\alias{check_logger}
+\alias{check_log_level}
+\alias{check_shiny}
+\alias{check_shiny_session}
+\alias{check_reactive}
+\alias{check_shiny_tag}
+\alias{check_shiny_taglist}
+\alias{check_bslib_page}
+\alias{check_html_widget}
+\alias{check_dt}
+\alias{check_reactable}
+\alias{check_apexchart}
 \alias{check_db_conn}
 \alias{check_db_config}
 \alias{check_chat}
@@ -13,22 +32,30 @@
 \alias{check_turn}
 \alias{check_request}
 \alias{check_response}
+\alias{check_data_frame}
 \alias{check_tibble}
 \alias{check_row}
 \alias{check_col_names}
+\alias{check_col_types}
 \alias{check_list}
 \alias{check_named}
 \alias{check_names}
+\alias{check_dots_named}
 \alias{check_date}
+\alias{check_time}
 \alias{check_path}
 \alias{check_dir}
+\alias{check_file}
+\alias{check_cache_path}
 \alias{check_config_file}
-\alias{check_cache}
+\alias{check_image}
 \alias{check_installed}
 \alias{check_repo}
+\alias{check_uuid}
 \alias{check_api_key}
 \alias{check_openai_api_key}
 \alias{check_anthropic_api_key}
+\alias{check_encryption_key}
 \title{Check Functions}
 \usage{
 check_inherits(
@@ -38,9 +65,91 @@ check_inherits(
   call = rlang::caller_env()
 )
 
+check_inherits_one_of(
+  obj,
+  classes,
+  arg = rlang::caller_arg(obj),
+  call = rlang::caller_env()
+)
+
+check_inherits_all(
+  obj,
+  classes,
+  arg = rlang::caller_arg(obj),
+  call = rlang::caller_env()
+)
+
 check_s7(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
 
 check_r6(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_r6_class(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_r6_object(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_function(
+  x,
+  ...,
+  allow_null = FALSE,
+  arg = caller_arg(x),
+  call = caller_env()
+)
+
+check_expression(
+  expr,
+  arg = rlang::caller_arg(expr),
+  call = rlang::caller_env()
+)
+
+check_cache(cache, arg = rlang::caller_arg(cache), call = rlang::caller_env())
+
+check_logger(
+  logger,
+  arg = rlang::caller_arg(logger),
+  call = rlang::caller_env()
+)
+
+check_log_level(
+  level,
+  arg = rlang::caller_arg(level),
+  call = rlang::caller_env()
+)
+
+check_shiny(call = rlang::caller_env())
+
+check_shiny_session(call = rlang::caller_env())
+
+check_reactive(
+  reactive,
+  arg = rlang::caller_arg(reactive),
+  call = rlang::caller_env()
+)
+
+check_shiny_tag(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_shiny_taglist(
+  obj,
+  arg = rlang::caller_arg(obj),
+  call = rlang::caller_env()
+)
+
+check_bslib_page(obj, arg = rlang::caller_arg(obj), call = rlang::caller_env())
+
+check_html_widget(
+  obj,
+  arg = rlang::caller_arg(obj),
+  call = rlang::caller_env()
+)
+
+check_dt(tbl, arg = rlang::caller_arg(tbl), call = rlang::caller_env())
+
+check_reactable(tbl, arg = rlang::caller_arg(tbl), call = rlang::caller_env())
+
+check_apexchart(
+  chart,
+  arg = rlang::caller_arg(chart),
+  call = rlang::caller_env()
+)
 
 check_db_conn(conn, arg = rlang::caller_arg(conn), call = rlang::caller_env())
 
@@ -58,6 +167,14 @@ check_request(req, arg = rlang::caller_arg(req), call = rlang::caller_env())
 
 check_response(resp, arg = rlang::caller_arg(resp), call = rlang::caller_env())
 
+check_data_frame(
+  x,
+  ...,
+  allow_null = FALSE,
+  arg = caller_arg(x),
+  call = caller_env()
+)
+
 check_tibble(data, arg = rlang::caller_arg(data), call = rlang::caller_env())
 
 check_row(row, arg = rlang::caller_arg(row), call = rlang::caller_env())
@@ -69,9 +186,12 @@ check_col_names(
   call = rlang::caller_env()
 )
 
-check_request(req, arg = rlang::caller_arg(req), call = rlang::caller_env())
-
-check_response(resp, arg = rlang::caller_arg(resp), call = rlang::caller_env())
+check_col_types(
+  data,
+  req_types,
+  arg = rlang::caller_arg(data),
+  call = rlang::caller_env()
+)
 
 check_list(lst, arg = rlang::caller_arg(lst), call = rlang::caller_env())
 
@@ -84,18 +204,28 @@ check_names(
   call = rlang::caller_env()
 )
 
-check_col_names(
-  data,
-  req_cols,
-  arg = rlang::caller_arg(data),
-  call = rlang::caller_env()
-)
+check_dots_named(..., call = rlang::caller_env())
 
 check_date(date, arg = rlang::caller_arg(date), call = rlang::caller_env())
+
+check_time(time, arg = rlang::caller_arg(time), call = rlang::caller_env())
 
 check_path(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
 
 check_dir(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
+
+check_file(
+  path,
+  ext = NULL,
+  arg = rlang::caller_arg(path),
+  call = rlang::caller_env()
+)
+
+check_cache_path(
+  path,
+  arg = rlang::caller_arg(path),
+  call = rlang::caller_env()
+)
 
 check_config_file(
   path = Sys.getenv("R_CONFIG_FILE", unset = "config.yml"),
@@ -103,11 +233,13 @@ check_config_file(
   call = rlang::caller_env()
 )
 
-check_cache(path, arg = rlang::caller_arg(path), call = rlang::caller_env())
+check_image(file, arg = rlang::caller_arg(file), call = rlang::caller_env())
 
 check_installed(pkg, arg = rlang::caller_arg(pkg), call = rlang::caller_env())
 
 check_repo(repo, arg = rlang::caller_arg(repo), call = rlang::caller_env())
+
+check_uuid(uuid, arg = rlang::caller_arg(uuid), call = rlang::caller_env())
 
 check_api_key(
   api_key,
@@ -126,15 +258,24 @@ check_anthropic_api_key(
   arg = rlang::caller_arg(api_key),
   call = rlang::caller_env()
 )
+
+check_encryption_key(
+  key,
+  arg = rlang::caller_arg(key),
+  call = rlang::caller_env()
+)
 }
 \arguments{
+\item{obj, func, expr, cache, logger, level, req, resp}{A generic object to check.}
+
 \item{class}{A character string representing the class to check against.}
 
-\item{arg, arg, call}{Internal arguments used for \link[rlang:args_error_context]{rlang::args_error_context} features.}
+\item{arg, call}{Internal arguments used for \link[rlang:args_error_context]{rlang::args_error_context} features.}
 
 \item{req_cols}{A character vector representing the required column names.}
-
-\item{x, conn, cfg, chat, tool, data, row, req, resp, lst, date, pkg, api_key}{The object to check.}
+}
+\value{
+All functions return the original object if the check passes (invisibly), or throw an error if it fails.
 }
 \description{
 A collection of functions for checking the validity of function arguments.
@@ -145,6 +286,40 @@ Below are the \code{check_} functions grouped by category:
 \item \code{check_inherits()}: Check if an object inherits from a specific class.
 \item \code{check_s7()}: Check if an object is an S3 object.
 \item \code{check_r6()}: Check if an object is an R6 object.
+\itemize{
+\item \code{check_r6_class()}: Check if an object is an R6 class.
+\item \code{check_r6_object()}: Check if an object is an R6 object.
+}
+}
+}
+
+\subsection{Other R Objects}{
+\itemize{
+\item \code{check_function()}: Check if an object is a function.
+\item \code{check_expression()}: Check if an object is an expression.
+}
+}
+
+\subsection{Custom Objects}{
+\itemize{
+\item \code{check_cache()}: Check if an object is a cache (\verb{cachem::cache_*()}) object.
+\item \code{check_logger()}: Check if an object is a logger (\code{logger::logger} or \code{lgr::Logger}) object.
+\item \code{check_log_level()}: Check if an object is a valid log level.
+}
+}
+
+\subsection{Shiny Apps}{
+\itemize{
+\item \code{check_shiny()}: Check if currently running inside a Shiny App.
+\item \code{check_shiny_session()}: Check for a valid, active Shiny session.
+\item \code{check_reactive()}: Check if an object is a \code{shiny::reactive()} or \code{shiny::reactiveValues()} object.
+\item \code{check_shiny_tag()}: Check if an object is an \code{htmltools::tag}.
+\item \code{check_shiny_taglist()}: Check if an object is an \code{htmltools::tagList}.
+\item \code{check_bslib_page()}: Check if an object is a \verb{bslib::page_*()} object.
+\item \code{check_html_widget()}: Check if an object is an \code{htmlwidgets::htmlwidget}.
+\item \code{check_dt()}: Check if an object is a \code{DT::datatable}.
+\item \code{check_reactable()}: Check if an object is a \code{reactable::reactable}.
+\item \code{check_apexchart()}: Check if an object is an \code{apexcharter::apex} chart.
 }
 }
 
@@ -160,27 +335,62 @@ Below are the \code{check_} functions grouped by category:
 \item \code{check_chat()}: Check if an object is a \link[ellmer:Chat]{ellmer::Chat} object.
 \item \code{check_tool()}: Check if an object is an \code{\link[ellmer:tool]{ellmer::tool()}} object.
 \item \code{check_type()}: Check if an object is an \link[ellmer:Type]{ellmer::Type} object.
+\item \code{check_turn()}: Check if an object is an \link[ellmer:Turn]{ellmer::Turn} object.
 }
 }
 
-\subsection{\code{tibble}}{
+\subsection{\code{httr2}}{
 \itemize{
+\item \code{check_request()}: Check if an object is a \link[httr2:request]{httr2::request} object.
+\item \code{check_response()}: Check if an object is a \link[httr2:response]{httr2::response} object.
+}
+}
+
+\subsection{\code{tibble} & \code{data.frame}}{
+\itemize{
+\item \code{check_data_frame()}: Check if an object is a data frame.
 \item \code{check_tibble()}: Check if an object is a \code{\link[tibble:tibble]{tibble::tibble()}} data frame.
 \item \code{check_row()}: Check if an object is a single-row data frame.
 \item \code{check_col_names()}: Check if a data frame contains specific column names.
+\item \code{check_col_types()}: Check if a data frame contains specific column types.
 }
 }
 
 \subsection{Lists}{
 \itemize{
 \item \code{check_list()}: Check if an object is a list.
-\item \code{check_list_names()}: Check if a list contains specific names.
 }
 }
 
-\subsection{Dates}{
+\subsection{Names}{
+\itemize{
+\item \code{check_named()}: Check if an object is named.
+\item \code{check_names()}: Check if a list or vector contains specific names.
+\item \code{check_dots_named()}: Check if all elements of \code{...} are named.
+}
+}
+
+\subsection{Dates and Times}{
 \itemize{
 \item \code{check_date()}: Check if an object is a valid date object.
+\item \code{check_time()}: Check if an object is a valid time object.
+\item \code{check_date_format()}: Check if a date object matches a specific format.
+}
+}
+
+\subsection{Paths}{
+\itemize{
+\item \code{check_path()}: Check if a path exists.
+\item \code{check_dir()}: Check if a path is a valid directory.
+\item \code{check_file()}: Check if a path is a valid file with a specific extension.
+\item \code{check_cache_path()}: Check if a path is a valid cache directory.
+\item \code{check_config_file()}: Check if a path is a valid configuration file.
+}
+}
+
+\subsection{Images}{
+\itemize{
+\item \code{check_image()}: Check if a file is a valid image file.
 }
 }
 
@@ -190,10 +400,30 @@ Below are the \code{check_} functions grouped by category:
 }
 }
 
+\subsection{Strings}{
+\itemize{
+\item \code{check_repo}: Check if a string is a valid GitHub repository string.
+\item \code{check_uuid}: Check if a string is a valid UUID.
+}
+}
+
 \subsection{API Keys}{
 \itemize{
+\item \code{check_api_key()}: Check if an object is a valid API key.
 \item \code{check_openai_api_key()}: Check if an object is a valid OpenAI API key.
 \item \code{check_anthropic_api_key()}: Check if an object is a valid Anthropic API key.
+}
+}
+
+\subsection{Encryption}{
+\itemize{
+\item \code{check_encryption_key()}: Check if an object is a valid encryption key.
+}
+}
+
+\subsection{Factories}{
+\itemize{
+\item \code{create_data_checker()}: Create a data checker function.
 }
 }
 }

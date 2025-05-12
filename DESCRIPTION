@@ -45,7 +45,7 @@ Imports:
     readr,
     rlang (>= 1.1.0),
     RPostgres,
-    S7,
+    shiny,
     skimr,
     snakecase,
     stats,
@@ -64,6 +64,7 @@ Suggests:
     DiagrammeR,
     knitr,
     rmarkdown,
+    S7,
     spelling,
     testthat (>= 3.0.0)
 VignetteBuilder: 
