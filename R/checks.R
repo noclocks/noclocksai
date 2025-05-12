@@ -973,41 +973,7 @@ check_encryption_key <- function(
 
 # factories -------------------------------------------------------------------------------------------------------
 
-#' Checker Function Factories
-#'
-#' @name utils_check_factories
-#'
-#' @description
-#' These functions create checker functions that can be used to validate the structure
-#' of the objects passed to them. They are useful for creating reusable validation functions
-#' that can be applied to different objects.
-#'
-#' - `create_data_checker()`: Creates a checker function for data frames or tibbles.
-#'
-#' @param data A data frame or tibble to be checked.
-#' @param req_cols A character vector of required column names.
-#' @param req_col_types A character vector of required column types.
-#'
-#' @returns
-#' A function that checks the structure of the data frame or tibble.
-#'
-#' @examples
-#' # create a checker function for the mtcars dataset
-#' check_mtcars <- create_data_checker(mtcars)
-#' # check the mtcars dataset (should pass)
-#' check_mtcars(mtcars)
-#' # check a different dataset (should fail)
-#' check_mtcars(iris)
-#'
-#' # create a checker function for only specific columns
-#' check_mtcars_2 <- create_data_checker(mtcars, req_cols = c("mpg", "cyl"))
-#' # check the mtcars dataset (should pass)
-#' check_mtcars_2(mtcars)
-#' # check a different dataset (should fail)
-#' check_mtcars_2(iris)
-NULL
-
-#' @rdname utils_check_factories
+#' @rdname checks
 #' @export
 create_data_checker <- function(data, req_cols = NULL, req_col_types = NULL) {
   df_chk_func <- NULL

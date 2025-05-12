@@ -56,6 +56,7 @@
 \alias{check_openai_api_key}
 \alias{check_anthropic_api_key}
 \alias{check_encryption_key}
+\alias{create_data_checker}
 \title{Check Functions}
 \usage{
 check_inherits(
@@ -264,6 +265,8 @@ check_encryption_key(
   arg = rlang::caller_arg(key),
   call = rlang::caller_env()
 )
+
+create_data_checker(data, req_cols = NULL, req_col_types = NULL)
 }
 \arguments{
 \item{obj, func, expr, cache, logger, level, req, resp}{A generic object to check.}
