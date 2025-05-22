@@ -6,8 +6,6 @@
 #
 #  ------------------------------------------------------------------------
 
-
-
 repomix_cfg_template <- fs::path("dev/templates/repomix.config.template.json")
 
 name <- pkgload::pkg_name()
