@@ -71,7 +71,7 @@ decode_base64 <- function(data) {
 #' encode_data(hud_markets, "text", max_rows = 10, show_end = 5) |> cat()
 encode_data <- function(data, method = c("json", "csv", "text"), max_rows = 100, show_end = 10) {
 
-  check_tibble(data)
+  check_data_frame(data)
 
   if (nrow(data) == 0) {
     cli::cli_alert_warning("Provided {.arg data} is empty. Encoding empty data as text.")

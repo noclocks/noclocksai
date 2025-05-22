@@ -49,3 +49,12 @@ xl_get_metadata <- function(xl_file, sheets = NULL) {
     xl_named_ranges = xl_named_ranges
   )
 }
+
+
+
+xl_get_sheets <- function(xl_file, ignore = NULL) {
+
+  check_file(xl_file, exts = c("xlsx", "xlsm"))
+
+}
+

@@ -63,9 +63,12 @@ NULL
 #'
 #' @keywords internal
 #' @noRd
+#'
+#'
+#' @importFrom utils tail
 capture_args <- function() {
   call <- sys.call(-1)
-  dots <- tail(as.list(call), -1)
+  dots <- utils::tail(as.list(call), -1)
   names(dots) <- sapply(names(dots), function(x) if (x == "") "" else x)
   dots
 }
