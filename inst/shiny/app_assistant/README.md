@@ -4,3 +4,5 @@
 > application and is used to leverage LLMs to generate shiny app code using natural language and a chatbot interface
 > to build a shiny app interactively.
 
+![image](https://github.com/user-attachments/assets/0a304723-fab8-45fc-87d1-a3c429e64492)
+
