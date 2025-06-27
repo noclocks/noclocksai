@@ -16,7 +16,7 @@
   ],
   "r.lsp.enabled": true,
   "r.lsp.debug": false,
-  "r.lsp.diagnostics": true,
+  "r.lsp.diagnostics": false,
   "r.bracketedPaste": true,
   "r.sessionWatcher": true,
   "[r]": {
