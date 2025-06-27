@@ -1,5 +1,6 @@
-// www/shinylive-communication.js
-;(function(){
+// shinylive-communication.js
+// JavaScript for Shiny Assistant app - handles communication with Shinylive iframe
+(function(){
   "use strict";
 
   // 1) Always target the SAME iframe ID
