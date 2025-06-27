@@ -6,6 +6,7 @@
 \alias{cfg_list}
 \alias{get_db_config}
 \alias{get_llms_config}
+\alias{get_tools_config}
 \alias{get_api_key}
 \alias{get_openai_api_key}
 \alias{set_openai_api_key}
@@ -35,6 +36,12 @@ get_db_config(
 )
 
 get_llms_config(
+  key = NULL,
+  file = Sys.getenv("R_CONFIG_FILE", pkg_sys("config/config.yml")),
+  config = Sys.getenv("R_CONFIG_ACTIVE", "default")
+)
+
+get_tools_config(
   key = NULL,
   file = Sys.getenv("R_CONFIG_FILE", pkg_sys("config/config.yml")),
   config = Sys.getenv("R_CONFIG_ACTIVE", "default")
