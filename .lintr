@@ -1,8 +1,10 @@
 linters: linters_with_defaults(
     line_length_linter(120),
+    indentation_linter(2),
+    object_length_linter(500),
+    object_usage_linter = NULL,
     commented_code_linter = NULL,
     trailing_blank_lines_linter = NULL
   )
 exclusions: list()
 encoding: "UTF-8"
-
