@@ -1,0 +1,6 @@
+*
+!.gitignore
+!repomix/
+!templates/
+!config_attachment.yaml
+!README.md

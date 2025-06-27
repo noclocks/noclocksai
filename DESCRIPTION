@@ -12,9 +12,9 @@ Description: The `noclocksai` package provides a set of tools for working
 License: file LICENSE
 URL: https://github.com/noclocks/noclocksai
 BugReports: https://github.com/noclocks/noclocksai/issues
-Depends: 
+Depends:
     R (>= 4.1)
-Imports: 
+Imports:
     base64enc,
     cachem,
     cli,
@@ -40,7 +40,6 @@ Imports:
     parallel,
     pkgload,
     pool,
-    processx,
     purrr,
     qs2,
     R6,
@@ -48,11 +47,13 @@ Imports:
     readr,
     rlang (>= 1.1.0),
     RPostgres,
+    S7,
     shiny,
     skimr,
     snakecase,
     stats,
     stringr,
+    sys,
     tibble,
     tibblify,
     tidyselect,
@@ -63,14 +64,13 @@ Imports:
     whisker,
     withr,
     yaml
-Suggests: 
+Suggests:
     DiagrammeR,
     knitr,
     rmarkdown,
-    S7,
     spelling,
     testthat (>= 3.0.0)
-VignetteBuilder: 
+VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
