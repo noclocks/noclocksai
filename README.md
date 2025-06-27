@@ -1,6 +1,10 @@
 # noclocksai <img src="man/figures/logo.png" align="right" height="120" alt="" />
 
 <!-- badges: start -->
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/noclocks/noclocksai)
+![](https://badge.mcpx.dev?type=dev 'MCP Dev')
+[![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/noclocks/noclocksai)](https://gitmcp.io/noclocks/noclocksai/chat)
+
 [![Test Coverage](https://github.com/noclocks/noclocksai/actions/workflows/coverage.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/coverage.yml)
 [![R-CMD-Check](https://github.com/noclocks/noclocksai/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/rcmdcheck.yml)
 [![Automate Changelog](https://github.com/noclocks/noclocksai/actions/workflows/changelog.yml/badge.svg)](https://github.com/noclocks/noclocksai/actions/workflows/changelog.yml)
