@@ -13,6 +13,7 @@
 
 ## Configuration
 
+- Add VS Code workspace, remove lintr ([acda8d8](https://github.com/noclocks/noclocksai/commit/acda8d868b5623329ba7b18e7e79f868416050f7))  - (Jimmy Briggs)
 - Update build and ignore configurations ([a186b38](https://github.com/noclocks/noclocksai/commit/a186b38596d74899368eb3d0683912e2211ccb98))  - (Jimmy Briggs)
 - Update config.template.yml to include database configuration ([c0cc6e1](https://github.com/noclocks/noclocksai/commit/c0cc6e19ec8b4b8f38242254f830aecf11464ca1))  - (Jimmy Briggs)
 
