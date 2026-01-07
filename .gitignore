@@ -8,3 +8,6 @@ inst/doc
 /doc/
 /Meta/
 temp/
+R/temp/**
+**repomix**
+!.github/prompts/repomix.prompt.md

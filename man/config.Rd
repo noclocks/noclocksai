@@ -6,6 +6,8 @@
 \alias{cfg_list}
 \alias{get_db_config}
 \alias{get_llms_config}
+\alias{get_tools_config}
+\alias{get_api_key}
 \alias{get_openai_api_key}
 \alias{set_openai_api_key}
 \alias{get_anthropic_api_key}
@@ -39,6 +41,14 @@ get_llms_config(
   config = Sys.getenv("R_CONFIG_ACTIVE", "default")
 )
 
+get_tools_config(
+  key = NULL,
+  file = Sys.getenv("R_CONFIG_FILE", pkg_sys("config/config.yml")),
+  config = Sys.getenv("R_CONFIG_ACTIVE", "default")
+)
+
+get_api_key(name, ...)
+
 get_openai_api_key()
 
 set_openai_api_key(key)
@@ -56,6 +66,8 @@ get_gmaps_api_key()
 set_gmaps_api_key(key)
 }
 \value{
+Each function returns the respective API key or sets it as an environment variable.
+
 Each function returns the respective API key or sets it as an environment variable.
 }
 \description{
@@ -86,5 +98,27 @@ Main Functions:
 \itemize{
 \item \code{cfg_get()}: Get the configuration settings from a configuration file.
 \item \code{cfg_list()}: List the configuration settings from a configuration file.
+}
+
+Database Functions:
+\itemize{
+\item \code{get_db_config()}: Get the database configuration from the configuration file.
+}
+
+LLM Functions:
+\itemize{
+\item \code{get_llms_config()}: Get the LLM configuration from the configuration file.
+\item \code{get_openai_api_key()}: Get the OpenAI API key from the configuration file.
+\item \code{set_openai_api_key()}: Set the OpenAI API key as an environment variable.
+\item \code{get_anthropic_api_key()}: Get the Anthropic API key from the configuration file.
+\item \code{set_anthropic_api_key()}: Set the Anthropic API key as an environment variable.
+\item \code{get_gemini_api_key()}: Get the Gemini API key from the configuration file.
+\item \code{set_gemini_api_key()}: Set the Gemini API key as an environment variable.
+}
+
+External API Functions:
+\itemize{
+\item \code{get_gmaps_api_key()}: Get the Google Maps API key from the configuration file.
+\item \code{set_gmaps_api_key()}: Set the Google Maps API key as an environment variable.
 }
 }

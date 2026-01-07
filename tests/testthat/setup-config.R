@@ -15,7 +15,7 @@ if (!has_encryption_key) {
 } else {
   cli::cli_alert_info("Encryption key found. Decrypting configuration file.")
   tryCatch({
-    decrypt_cfg_file()
+    decrypt_config()
     skip_config_tests <- FALSE
   })
 }

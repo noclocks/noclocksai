@@ -1,0 +1,192 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "FIRECRAWL_API_KEY",
+      "description": "The API key for Firecrawl (leave empty if set in .vscode/mcp.env)",
+      "default": "${env:FIRECRAWL_API_KEY}",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "PERPLEXITY_API_KEY",
+      "description": "The API key for Perplexity (leave empty if set in .vscode/mcp.env)",
+      "default": "${env:PERPLEXITY_API_KEY}",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "SLACK_BOT_TOKEN",
+      "description": "The API token for Slack (leave empty if set in .vscode/mcp.env)",
+      "default": "${env:SLACK_BOT_TOKEN}",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "GITHUB_PAT",
+      "description": "The GitHub Personal Access Token (PAT) (leave empty if set in environment variables)",
+      "default": "${env:GITHUB_PAT}",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "MEMORY_PATH",
+      "description": "The file path to the memory storage (leave empty if set in .vscode/mcp.env)",
+      "default": ".vscode/agent.memory.jsonl"
+    }
+  ],
+  "servers": {
+    "mcp-memory": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "mcp-knowledge-graph",
+        "--memory-path",
+        ".vscode/agent.memory.jsonl"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
+    "mcp-sequential-thinking": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "mcp-desktop-commander": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@wonderwhy-er/desktop-commander@latest"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
+    "mcp-context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "mcp-firecrawl": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": ["-y", "firecrawl-mcp"],
+      "envFile": "${workspaceFolder}/.vscode/mcp.env",
+      "env": {
+        "FIRECRAWL_API_KEY": "${input:FIRECRAWL_API_KEY}"
+      }
+    },
+    "mcp-perplexity": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "server-perplexity-ask",
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "${input:PERPLEXITY_API_KEY}"
+      },
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.vscode/mcp.env"
+    },
+    "mcp-slack": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-slack"
+      ],
+      "env": {
+        "SLACK_BOT_TOKEN": "${input:SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "T06JSGACWSU",
+        "SLACK_CHANNEL_IDS": "C079SLD4F9N"
+      },
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.vscode/mcp.env"
+    },
+    "gitmcp-noclocksai": {
+      "type": "http",
+      "url": "https://gitmcp.io/noclocks/noclocksai"
+    },
+    "gitmcp-httr2": {
+      "type": "http",
+      "url": "https://gitmcp.io/tidyverse/httr2"
+    },
+    "gitmcp-ellmer": {
+      "type": "http",
+      "url": "https://gitmcp.io/tidyverse/ellmer"
+    },
+    "gitmcp-shinychat": {
+      "type": "http",
+      "url": "https://gitmcp.io/posit-dev/shinychat"
+    },
+    "gitmcp-btw": {
+      "type": "http",
+      "url": "https://gitmcp.io/posit-dev/btw"
+    },
+    "gitmcp-shiny-assistant": {
+      "type": "http",
+      "url": "https://gitmcp.io/posit-dev/shiny-assistant"
+    },
+    "gitmcp-bslib": {
+      "type": "http",
+      "url": "https://gitmcp.io/rstudio/bslib"
+    },
+    "gitmcp-shinylive": {
+      "type": "http",
+      "url": "https://gitmcp.io/posit-dev/shinylive"
+    },
+    "gitmcp-shiny": {
+      "type": "http",
+      "url": "https://gitmcp.io/rstudio/shiny"
+    },
+    "gitmcp-webr": {
+      "type": "http",
+      "url": "https://gitmcp.io/r-wasm/webr"
+    },
+    "gitmcp-shinytest2": {
+      "type": "http",
+      "url": "https://gitmcp.io/rstudio/shinytest2"
+    },
+    "gitmcp-tibblify": {
+      "type": "http",
+      "url": "https://gitmcp.io/mgirlich/tibblify"
+    },
+    "gitmcp-reactable": {
+      "type": "http",
+      "url": "https://gitmcp.io/glin/reactable"
+    },
+    "gitmcp-testthat": {
+      "type": "http",
+      "url": "https://gitmcp.io/r-lib/testthat"
+    },
+    "gitmcp-rlang": {
+      "type": "http",
+      "url": "https://gitmcp.io/r-lib/rlang"
+    },
+    "r-acquaint": {
+      "type": "stdio",
+      "command": "RScript",
+      "args": [
+        "-e",
+        "acquaint::mcp_server()"
+      ]
+    },
+    "browser-tools": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@agentdeskai/browser-tools-mcp@latest"
+      ]
+    },
+    "mcp-repomix": {
+      "type": "stdio",
+      "command": "repomix",
+      "args": [
+        "--mcp"
+      ]
+    }
+  }
+}

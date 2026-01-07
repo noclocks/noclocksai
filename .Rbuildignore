@@ -21,3 +21,5 @@
 ^.repomixignore$
 ^noclocksai.code-workspace$
 repomix.config.json
+^CLAUDE\.md$
+^R/temp$

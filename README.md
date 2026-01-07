@@ -25,6 +25,63 @@ The `noclocksai` package provides a comprehensive toolkit for working with AI se
 - **Mermaid Diagrams**: Generate mermaid.js diagrams with natural language
 - **Configuration Management**: Secure API key and environment management
 
+## Core Architecture
+
+The `noclocksai` package is structured around six primary subsystems that work together to provide a complete framework for AI agent development:
+
+```mermaid
+graph LR
+  noclocksai[noclocksai]
+  noclocksai --> AF[Agent Framework]
+  noclocksai --> AI[API Integrations]
+  noclocksai --> CS[Configuration System]
+  noclocksai --> DI[Database Integration]
+  noclocksai --> ES[Embedding System]
+  noclocksai --> UF[Utility Functions]
+
+  AF --> AC[Agent Class]
+  AF --> SA[Specialized Agents]
+  AF --> TR[Tool Registration]
+  AF --> PT[Prompt Templates]
+  AF --> CI[Chat Interface]
+
+  noclocksai --> Providers[LLM Providers]
+  Providers --> OAI[OpenAI]
+  Providers --> A[Anthropic]
+  Providers --> Gemini[Google Gemini]
+  Providers --> O[Ollama]
+  Providers --> G[Groq]
+  Providers --> OpenRouter[OpenRouter]
+
+  CS --> AKM[API Key Management]
+  CS --> DC[Database Configuration]
+  CS --> LC[Logger Configuration]
+  CS --> CC[Connection Config]
+  CS --> DS[Document Storage]
+  CS --> SS[Vector Search]
+
+  DI --> OE[OpenAI Embeddings]
+  DI --> LE[LangChain Embeddings]
+  DI --> BP[Bulk Processing]
+  DI --> CE[Code Execution]
+  DI --> DV[Data Validation]
+  DI --> C[Caching]
+
+  ES --> OEm[OpenAI Embeddings]
+  ES --> LEm[LangChain Embeddings]
+  ES --> BP2[Bulk Processing]
+  ES --> CE2[Code Execution]
+  ES --> DV2[Data Validation]
+  ES --> C2[Caching]
+
+  UF --> UE[Utility Embeddings]
+  UF --> LU[LangChain Utilities]
+  UF --> BPU[Bulk Processing Utils]
+  UF --> CEU[Code Execution Utils]
+  UF --> DVU[Data Validation Utils]
+  UF --> CU[Caching Utils]
+```
+
 ## AI & Agentic Capabilities
 
 ### LLM Provider Integrations
